@@ -16,8 +16,7 @@ def load_data(file_name):
         return df
     
     except FileNotFoundError as e:
-        print(f"{e} occurred")
-
+        print(f"AN ERROR OCCURED: {e}")
 
 '''Conversion of date to datetime objects'''
 def to_date_time(df):
@@ -26,8 +25,9 @@ def to_date_time(df):
             df[col] = pd.to_datetime(df[col])
 
 
-        except Exception:
-            pass
+        except Exception as e:
+            print(f"AN ERROR OCCURED: {e}")
+
     print("Conversion successful")
     return df
 
@@ -40,8 +40,16 @@ def uniform_string_values(df):
             print("The strings are cleaned and they are standarized")
             return df
 
-        except Exception:
-            pass
+        except Exception as e:
+            print(f"AN ERROR OCCURRED: {e}")
+
+
+
+'''Enforcing the column datas'''
+def enforce_data_type(df,string_cols,numeric_cols):
+    df[string_cols] = df[string_cols].astype("string")
+    df[numeric_cols] = df[numeric_cols].apply(pd.to_numeric,errors ="coerce")
+    return df
 
 
 '''Get user's Preference'''
@@ -86,8 +94,8 @@ def fuzzy_matcher(df,targets):
         if all(score>=80 for score in target_storage):
             return True
 
-    except Exception:
-        pass
+    except Exception as e:
+        print(f"AN ERROR OCCURED: {e}")
 
 
 
@@ -108,7 +116,7 @@ def totals(df,int_col):
         return result
     
     except Exception as e:
-        pass
+        print(f"AN ERROR OCCURED: {e}")
 
 
 
@@ -165,10 +173,11 @@ def main():
         df = load_data(FILE_NAME)
 
     except Exception as e: 
-        print(f"An error occurred {e}")
+        print(f"AN ERROR OCCURED: {e}")
 
     to_date_time(df)
     uniform_string_values(df)
+    enforce_data_type(df,STRING_COLS,INTEGER_COLS)
 
     if(user_preference()):
         try:
@@ -211,7 +220,7 @@ def main():
     print("\n==The highest buying gender is==\n")
     print(highest_buying_gender)
 
-    print("\n==The highest buying age group is==\n")
+    print("\n==The popular products among the age group is==\n")
     print(popular_products_by_age)
 
 
