@@ -18,31 +18,35 @@ def load_data(file_name):
     except FileNotFoundError as e:
         print(f"AN ERROR OCCURED: {e}")
 
+
+
 '''Conversion of date to datetime objects'''
 def to_date_time(df):
+
+
     for col in df.select_dtypes(include="object").columns:
         try:
             df[col] = pd.to_datetime(df[col])
 
-
-        except Exception as e:
-            print(f"AN ERROR OCCURED: {e}")
+        except Exception:
+            pass
 
     print("Conversion successful")
-    return df
+    # return df
+    # print(df)
 
 
 '''making all the string values clean and uniform'''
 def uniform_string_values(df):
-    for col in df.select_dtypes(include="string").columns:
+    for col in df.select_dtypes(include="object").columns:
         try: 
             df[col] = df[col].str.strip().str.title()
-            print("The strings are cleaned and they are standarized")
-            return df
+ 
+            
 
         except Exception as e:
             print(f"AN ERROR OCCURRED: {e}")
-
+    return df
 
 
 '''Enforcing the column datas'''
@@ -68,8 +72,6 @@ def user_preference():
 
 
 
-
-
 '''Insights based on particular time frame'''
 def insights_within_time_constraints(df,start,end):
     try: 
@@ -82,17 +84,19 @@ def insights_within_time_constraints(df,start,end):
 
 
 '''A reuseable function for matching the columns values'''
-def fuzzy_matcher(df,targets):
+def fuzzy_matcher(df,targets,threshold = 80):
     try:
-        target_storage = []
+        matched = {}
         for target in targets:
             match,score,_ = process.extractOne(target,df.columns)
-            if score >= 80:
-                target_storage.append(score)
-            else:
-                pass
-        if all(score>=80 for score in target_storage):
-            return True
+
+            if score >= threshold:
+                matched[target] = match
+
+        return matched if len(matched) == len(targets) else None
+
+  
+
 
     except Exception as e:
         print(f"AN ERROR OCCURED: {e}")
@@ -124,18 +128,23 @@ def totals(df,int_col):
 '''insights on profits'''
 def profit(df):
     targets = ["Product","Profit"]
-    if(fuzzy_matcher(df,targets)):
-        return df.groupby(targets[0])[targets[1]].sum().sort_values(ascending=False)
+    match = fuzzy_matcher(df,targets)
+    if match:
+
+        return df.groupby(match["Product"])[match["Profit"]].sum().sort_values(ascending=False)
     
     else:
-        pass
+        print("Required column not found for profit calculations")
+        return None
 
 
 '''Average order Quantity'''
 def average_order_quantity(df):
     targets = ["Product","Order_Quantity"]
-    if (fuzzy_matcher(df,targets)):
-        return df.groupby(targets[0])[targets[1]].mean().sort_values(ascending=False)
+    match = fuzzy_matcher(df,targets)
+
+    if match:
+        return df.groupby(match["Product"])[match["Order_Quantity"]].mean().sort_values(ascending=False)
     
     else:
         pass
@@ -144,10 +153,11 @@ def average_order_quantity(df):
 '''Geographical insights on sales'''
 def sales_by_region(df):
     targets = ["Country","Product","Order_Quantity"]
-    if (fuzzy_matcher(df,targets)):
-        sellings_on_each_country =  df.groupby([targets[0],targets[1]])[targets[2]].sum().sort_values(ascending=False)
+    match = fuzzy_matcher(df,targets)
+    if match:
+        sellings_on_each_country =  df.groupby([match["Country"],match["Product"]])[match["Order_Quantity"]].sum().sort_values(ascending=False)
 
-        highest_selling_product_by_country = df.groupby([targets[1],targets[0]])[targets[2]].sum().sort_values(ascending=False)
+        highest_selling_product_by_country = df.groupby([match["Product"],match["Country"]])[match["Order_Quantity"]].sum().sort_values(ascending=False)
 
         return sellings_on_each_country,highest_selling_product_by_country
 
@@ -156,12 +166,14 @@ def sales_by_region(df):
 '''sales insights based on personal traits'''
 def sales_by_personal_traits(df):
     targets = ["Product","Customer_Age","Age_Group","Order_Quantity","Customer_Gender"]
-    if (fuzzy_matcher(df,targets)):
-        highest_buying_group = df.groupby(targets[2])[targets[3]].sum().sort_values(ascending=False)
 
-        highest_buying_gender = df.groupby([targets[0],targets[4]])[targets[3]].sum().sort_values(ascending=False)
+    match = fuzzy_matcher(df,targets)
+    if match:
+        highest_buying_group = df.groupby(match["Age_Group"])[match["Order_Quantity"]].sum().sort_values(ascending=False)
 
-        popular_products_by_age = df.groupby([targets[0],targets[2]])[targets[3]].sum().sort_values(ascending=False)
+        highest_buying_gender = df.groupby([match["Product"],match["Customer_Gender"]])[match["Order_Quantity"]].sum().sort_values(ascending=False)
+
+        popular_products_by_age = df.groupby([match["Product"],match["Age_Group"]])[match["Order_Quantity"]].sum().sort_values(ascending=False)
 
 
         return highest_buying_group,highest_buying_gender,popular_products_by_age
@@ -176,6 +188,7 @@ def main():
         print(f"AN ERROR OCCURED: {e}")
 
     to_date_time(df)
+    print("Now the uniform string values")
     uniform_string_values(df)
     enforce_data_type(df,STRING_COLS,INTEGER_COLS)
 
