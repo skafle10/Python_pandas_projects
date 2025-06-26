@@ -1,4 +1,6 @@
 
+
+import warnings
 import pandas as pd
 from rapidfuzz import process
 
@@ -23,13 +25,15 @@ def load_data(file_name):
 '''Conversion of date to datetime objects'''
 def to_date_time(df):
 
+    with warnings.catch_warnings():
 
-    for col in df.select_dtypes(include="object").columns:
-        try:
-            df[col] = pd.to_datetime(df[col])
+        for col in df.select_dtypes(include="object").columns:
+            try:
+                warnings.simplefilter(action="ignore",category=UserWarning)   #Suppressing the User warning  that is being shown everytime the columns can't be converted as the datatype object
+                df[col] = pd.to_datetime(df[col])
 
-        except Exception:
-            pass
+            except Exception:
+                pass
 
     print("Conversion successful")
     # return df
@@ -58,11 +62,11 @@ def enforce_data_type(df,string_cols,numeric_cols):
 
 '''Get user's Preference'''
 def user_preference():
-    USER_INPUT = input("==Do you want the analysis for all the data(A) of for the data of specific time range(T)?==").upper()
-    if USER_INPUT == "T":
+    user_input = input("==Do you want the analysis for all the data(A) of for the data of specific time range(T)?==").upper()
+    if user_input == "T":
         return True 
 
-    elif (USER_INPUT == "A"):
+    elif (user_input == "A"):
         pass
 
     else:
