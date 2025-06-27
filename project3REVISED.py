@@ -1,4 +1,6 @@
 
+'''SALES DATA ANALYZER'''
+
 
 import warnings
 import pandas as pd
@@ -10,6 +12,7 @@ STRING_COLS = ["Month","Age_Group","Customer_Gender","Country","State","Product_
 
 INTEGER_COLS = ["Order_Quantity","Unit_Cost","Unit_Price","Profit","Cost","Revenue"]
 
+FUZZ_THRESHOLD = 80
 
 '''Load the datas'''
 def load_data(file_name):
@@ -36,8 +39,8 @@ def to_date_time(df):
                 pass
 
     print("Conversion successful")
-    # return df
-    # print(df)
+    return df
+    
 
 
 '''making all the string values clean and uniform'''
@@ -88,7 +91,7 @@ def insights_within_time_constraints(df,start,end):
 
 
 '''A reuseable function for matching the columns values'''
-def fuzzy_matcher(df,targets,threshold = 80):
+def fuzzy_matcher(df,targets,threshold):
     try:
         matched = {}
         for target in targets:
@@ -132,7 +135,7 @@ def totals(df,int_col):
 '''insights on profits'''
 def profit(df):
     targets = ["Product","Profit"]
-    match = fuzzy_matcher(df,targets)
+    match = fuzzy_matcher(df,targets,FUZZ_THRESHOLD)
     if match:
 
         return df.groupby(match["Product"])[match["Profit"]].sum().sort_values(ascending=False)
@@ -145,7 +148,7 @@ def profit(df):
 '''Average order Quantity'''
 def average_order_quantity(df):
     targets = ["Product","Order_Quantity"]
-    match = fuzzy_matcher(df,targets)
+    match = fuzzy_matcher(df,targets,FUZZ_THRESHOLD)
 
     if match:
         return df.groupby(match["Product"])[match["Order_Quantity"]].mean().sort_values(ascending=False)
@@ -157,7 +160,7 @@ def average_order_quantity(df):
 '''Geographical insights on sales'''
 def sales_by_region(df):
     targets = ["Country","Product","Order_Quantity"]
-    match = fuzzy_matcher(df,targets)
+    match = fuzzy_matcher(df,targets,FUZZ_THRESHOLD)
     if match:
         sellings_on_each_country =  df.groupby([match["Country"],match["Product"]])[match["Order_Quantity"]].sum().sort_values(ascending=False)
 
@@ -171,7 +174,7 @@ def sales_by_region(df):
 def sales_by_personal_traits(df):
     targets = ["Product","Customer_Age","Age_Group","Order_Quantity","Customer_Gender"]
 
-    match = fuzzy_matcher(df,targets)
+    match = fuzzy_matcher(df,targets,FUZZ_THRESHOLD)
     if match:
         highest_buying_group = df.groupby(match["Age_Group"])[match["Order_Quantity"]].sum().sort_values(ascending=False)
 
