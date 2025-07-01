@@ -1,0 +1,122 @@
+
+Customer_ID,Customer_Name,Gender,Country,Email,Date_of_Purchase,Product,Quantity,Revenue,Profit
+4458A885,Roy Martin,Male,Reunion,amandasanchez@gray-mayo.net,2025-03-21,Smartwatch,2,587.16,70.46
+B45ED1F0,Mark Mcclure,Male,Bangladesh,kendragalloway@delacruz.com,2025-04-12,Smartphone,2,1503.94,225.6
+2031D750,John Jones,Male,Brunei Darussalam,josephbrennan@yahoo.com,2025-05-12,Headphones,3,542.13,54.21
+3E351128,Carlos Walls,Male,Slovenia,glee@hotmail.com,2025-03-19,Smartphone,2,1978.5,296.78
+0B1F9163,Brent Abbott,Female,Saint Lucia,dudleynicholas@hotmail.com,2025-04-13,Headphones,3,548.82,54.87
+2031D750,John Jones,Male,Brunei Darussalam,josephbrennan@yahoo.com,2024-12-27,Smartwatch,1,255.69,30.68
+C07A30F2,Carlos Brewer,Male,Vietnam,ellisyolanda@jones.net,2025-01-16,Smartwatch,1,265.96,31.92
+C17AF08A,Daniel Bright,Male,Australia,courtneyconner@carlson-cruz.org,2025-01-09,Smartphone,2,1504.1,225.62
+9E8FC965,Todd Hudson,Male,Belgium,sarah35@gmail.com,2025-06-15,Monitor,2,465.06,65.1
+A491F0B2,Emily Rios,Male,Kuwait,donald88@burgess-patterson.org,2025-05-09,Headphones,3,510.54,51.06
+9E8FC965,Todd Hudson,Male,Belgium,sarah35@gmail.com,2025-06-19,Smartphone,1,843.65,126.55
+610461E3,John Hancock,Male,Afghanistan,sara74@yahoo.com,2025-01-23,Smartwatch,2,349.02,41.88
+1D53434B,Kendra Maddox DVM,Female,Pitcairn Islands,daniel62@yahoo.com,2025-04-10,Smartwatch,1,252.69,30.32
+C17AF08A,Daniel Bright,Male,Australia,courtneyconner@carlson-cruz.org,2025-01-01,Laptop,2,2805.04,504.9
+1D53434B,Kendra Maddox DVM,Female,Pitcairn Islands,daniel62@yahoo.com,2025-06-06,Smartphone,3,2053.17,307.98
+48F4EF12,Timothy Ibarra,Female,Cayman Islands,cheryl80@hotmail.com,2025-03-07,Monitor,2,485.06,67.9
+4FCCA39A,Tanya Campos,Male,Iran,clam@gmail.com,2025-04-18,Mouse,1,40.0,8.8
+C17AF08A,Daniel Bright,Male,Australia,courtneyconner@carlson-cruz.org,2025-04-12,Headphones,2,349.4,34.94
+27A0C3D7,Monica Logan,Female,Comoros,tanyariley@hotmail.com,2025-01-23,Keyboard,1,75.34,15.07
+134C6C92,Javier Ramirez,Female,Kenya,pearsonamber@novak.com,2025-03-19,Mouse,1,36.36,8.0
+B45ED1F0,Mark Mcclure,Male,Bangladesh,kendragalloway@delacruz.com,2025-01-19,Tablet,3,1464.69,234.36
+38602AB6,Austin Smith,Male,Albania,perezrebecca@jones-young.info,2025-01-03,Smartphone,3,2261.73,339.27
+3E351128,Carlos Walls,Male,Slovenia,glee@hotmail.com,2025-02-23,Headphones,1,197.11,19.71
+C07A30F2,Carlos Brewer,Male,Vietnam,ellisyolanda@jones.net,2025-03-06,Smartphone,3,2618.04,392.7
+0B49452D,Taylor Mathis Jr.,Female,Afghanistan,danagreen@hotmail.com,2025-06-18,Headphones,2,353.72,35.38
+B45ED1F0,Mark Mcclure,Male,Bangladesh,kendragalloway@delacruz.com,2025-06-25,Headphones,2,286.96,28.7
+1A3D1FA7,Allison Hill,Male,Philippines,fjohnson@hall.com,2025-05-29,Headphones,1,197.19,19.72
+134C6C92,Javier Ramirez,Female,Kenya,pearsonamber@novak.com,2025-06-11,Smartphone,2,1896.42,284.46
+9E8FC965,Todd Hudson,Male,Belgium,sarah35@gmail.com,2025-01-02,Smartwatch,1,172.93,20.75
+610461E3,John Hancock,Male,Afghanistan,sara74@yahoo.com,2025-06-18,Laptop,2,2598.94,467.8
+1A3D1FA7,Allison Hill,Male,Philippines,fjohnson@hall.com,2025-03-05,Smartphone,2,1943.28,291.5
+C17AF08A,Daniel Bright,Male,Australia,courtneyconner@carlson-cruz.org,2025-02-04,Laptop,3,3361.32,605.04
+0B1F9163,Brent Abbott,Female,Saint Lucia,dudleynicholas@hotmail.com,2025-05-07,Smartphone,1,892.76,133.91
+0B49452D,Taylor Mathis Jr.,Female,Afghanistan,danagreen@hotmail.com,2025-02-12,Tablet,2,677.04,108.32
+610461E3,John Hancock,Male,Afghanistan,sara74@yahoo.com,2025-05-04,Tablet,3,1138.56,182.16
+38602AB6,Austin Smith,Male,Albania,perezrebecca@jones-young.info,2025-01-14,Smartwatch,3,868.02,104.16
+48F4EF12,Timothy Ibarra,Female,Cayman Islands,cheryl80@hotmail.com,2025-03-04,Smartwatch,2,513.88,61.66
+C07A30F2,Carlos Brewer,Male,Vietnam,ellisyolanda@jones.net,2025-05-26,Monitor,3,862.86,120.81
+3E351128,Carlos Walls,Male,Slovenia,glee@hotmail.com,2025-04-13,Smartphone,1,699.16,104.87
+04FC6D82,Tammy Sellers,Male,Bouvet Island (Bouvetoya),john39@gmail.com,2025-06-15,Laptop,1,1294.15,232.95
+27A0C3D7,Monica Logan,Female,Comoros,tanyariley@hotmail.com,2025-06-13,Smartwatch,3,453.24,54.39
+9E8FC965,Todd Hudson,Male,Belgium,sarah35@gmail.com,2025-03-14,Laptop,1,1114.47,200.6
+04FC6D82,Tammy Sellers,Male,Bouvet Island (Bouvetoya),john39@gmail.com,2025-04-25,Smartphone,2,1611.32,241.7
+C07A30F2,Carlos Brewer,Male,Vietnam,ellisyolanda@jones.net,2025-05-20,Mouse,1,45.0,9.9
+43B409EF,Elizabeth Alvarado,Female,Brazil,josephjacobs@cooper.net,2025-01-25,Mouse,2,94.02,20.68
+38602AB6,Austin Smith,Male,Albania,perezrebecca@jones-young.info,2025-06-23,Smartwatch,3,492.45,59.1
+38602AB6,Austin Smith,Male,Albania,perezrebecca@jones-young.info,2025-06-24,Monitor,2,569.44,79.72
+43B409EF,Elizabeth Alvarado,Female,Brazil,josephjacobs@cooper.net,2025-02-09,Laptop,3,4010.04,721.8
+B45ED1F0,Mark Mcclure,Male,Bangladesh,kendragalloway@delacruz.com,2025-06-11,Laptop,2,2402.62,432.48
+B45ED1F0,Mark Mcclure,Male,Bangladesh,kendragalloway@delacruz.com,2025-01-26,Smartwatch,3,536.22,64.35
+3E351128,Carlos Walls,Male,Slovenia,glee@hotmail.com,2025-05-30,Tablet,2,853.12,136.5
+3E351128,Carlos Walls,Male,Slovenia,glee@hotmail.com,2025-06-01,Smartwatch,1,281.17,33.74
+3E351128,Carlos Walls,Male,Slovenia,glee@hotmail.com,2025-01-29,Smartphone,3,1860.72,279.12
+1A3D1FA7,Allison Hill,Male,Philippines,fjohnson@hall.com,2025-06-15,Smartphone,1,970.55,145.58
+0837B8A3,Frederick Tate,Male,Sri Lanka,nadams@hotmail.com,2025-03-16,Keyboard,1,83.99,16.8
+4FCCA39A,Tanya Campos,Male,Iran,clam@gmail.com,2024-12-30,Laptop,1,1082.32,194.82
+4FCCA39A,Tanya Campos,Male,Iran,clam@gmail.com,2025-01-29,Headphones,2,385.3,38.54
+2DBC2134,Nathan Cortez,Male,Macedonia,meagan89@hernandez.net,2025-05-18,Keyboard,3,296.28,59.25
+610461E3,John Hancock,Male,Afghanistan,sara74@yahoo.com,2025-06-23,Mouse,2,81.68,17.96
+A491F0B2,Emily Rios,Male,Kuwait,donald88@burgess-patterson.org,2025-02-28,Laptop,3,3868.77,696.39
+96DA1DAC,Michelle Miles,Male,Fiji,helenpeterson@lewis.com,2025-05-26,Monitor,3,634.29,88.8
+A748DBCF,Jeff Owens,Male,Oman,powellmatthew@wright.net,2025-06-24,Tablet,3,951.18,152.19
+0B1F9163,Brent Abbott,Female,Saint Lucia,dudleynicholas@hotmail.com,2025-03-15,Tablet,1,320.56,51.29
+C07A30F2,Carlos Brewer,Male,Vietnam,ellisyolanda@jones.net,2025-05-30,Smartwatch,3,631.71,75.81
+C17AF08A,Daniel Bright,Male,Australia,courtneyconner@carlson-cruz.org,2025-05-05,Laptop,2,2619.38,471.48
+C07A30F2,Carlos Brewer,Male,Vietnam,ellisyolanda@jones.net,2025-06-11,Monitor,1,386.94,54.17
+C07A30F2,Carlos Brewer,Male,Vietnam,ellisyolanda@jones.net,2025-05-17,Monitor,2,495.48,69.36
+4458A885,Roy Martin,Male,Reunion,amandasanchez@gray-mayo.net,2025-06-01,Headphones,1,145.72,14.57
+1A3D1FA7,Allison Hill,Male,Philippines,fjohnson@hall.com,2025-02-12,Mouse,3,220.44,48.51
+B45ED1F0,Mark Mcclure,Male,Bangladesh,kendragalloway@delacruz.com,2025-02-15,Smartphone,3,2445.15,366.78
+1D53434B,Kendra Maddox DVM,Female,Pitcairn Islands,daniel62@yahoo.com,2025-01-25,Tablet,1,579.98,92.8
+C17AF08A,Daniel Bright,Male,Australia,courtneyconner@carlson-cruz.org,2025-05-27,Monitor,2,514.0,71.96
+610461E3,John Hancock,Male,Afghanistan,sara74@yahoo.com,2025-05-11,Headphones,3,483.51,48.36
+134C6C92,Javier Ramirez,Female,Kenya,pearsonamber@novak.com,2025-01-15,Laptop,3,4001.79,720.33
+2DBC2134,Nathan Cortez,Male,Macedonia,meagan89@hernandez.net,2025-03-10,Smartphone,1,975.57,146.34
+1D53434B,Kendra Maddox DVM,Female,Pitcairn Islands,daniel62@yahoo.com,2025-06-13,Smartphone,3,2867.67,430.14
+610461E3,John Hancock,Male,Afghanistan,sara74@yahoo.com,2025-01-02,Tablet,3,1145.1,183.21
+A491F0B2,Emily Rios,Male,Kuwait,donald88@burgess-patterson.org,2025-06-10,Monitor,3,722.16,101.1
+1D53434B,Kendra Maddox DVM,Female,Pitcairn Islands,daniel62@yahoo.com,2025-03-27,Mouse,1,47.58,10.47
+0B1F9163,Brent Abbott,Female,Saint Lucia,dudleynicholas@hotmail.com,2025-02-07,Keyboard,1,108.05,21.61
+1A3D1FA7,Allison Hill,Male,Philippines,fjohnson@hall.com,2025-02-02,Monitor,3,1062.66,148.77
+1D53434B,Kendra Maddox DVM,Female,Pitcairn Islands,daniel62@yahoo.com,2025-06-02,Tablet,3,1567.11,250.74
+48F4EF12,Timothy Ibarra,Female,Cayman Islands,cheryl80@hotmail.com,2025-06-22,Keyboard,1,89.26,17.85
+0B1F9163,Brent Abbott,Female,Saint Lucia,dudleynicholas@hotmail.com,2025-03-25,Tablet,2,927.36,148.38
+27A0C3D7,Monica Logan,Female,Comoros,tanyariley@hotmail.com,2025-03-03,Tablet,1,428.94,68.63
+2DBC2134,Nathan Cortez,Male,Macedonia,meagan89@hernandez.net,2025-02-23,Monitor,1,379.8,53.17
+2031D750,John Jones,Male,Brunei Darussalam,josephbrennan@yahoo.com,2025-06-03,Smartwatch,3,756.93,90.84
+B45ED1F0,Mark Mcclure,Male,Bangladesh,kendragalloway@delacruz.com,2025-05-29,Monitor,2,712.04,99.68
+DA4BD9CA,Erik Williams,Female,Malta,yuchristopher@jones.com,2025-06-13,Tablet,1,577.73,92.44
+0837B8A3,Frederick Tate,Male,Sri Lanka,nadams@hotmail.com,2025-02-08,Tablet,1,564.42,90.31
+0837B8A3,Frederick Tate,Male,Sri Lanka,nadams@hotmail.com,2025-02-07,Monitor,2,712.96,99.82
+C07A30F2,Carlos Brewer,Male,Vietnam,ellisyolanda@jones.net,2024-12-30,Smartwatch,3,570.06,68.4
+B45ED1F0,Mark Mcclure,Male,Bangladesh,kendragalloway@delacruz.com,2025-05-03,Keyboard,2,222.1,44.42
+C17AF08A,Daniel Bright,Male,Australia,courtneyconner@carlson-cruz.org,2025-02-01,Smartwatch,2,544.98,65.4
+2031D750,John Jones,Male,Brunei Darussalam,josephbrennan@yahoo.com,2025-03-13,Headphones,1,182.05,18.21
+C17AF08A,Daniel Bright,Male,Australia,courtneyconner@carlson-cruz.org,2025-02-27,Laptop,2,2660.04,478.8
+04FC6D82,Tammy Sellers,Male,Bouvet Island (Bouvetoya),john39@gmail.com,2025-02-18,Headphones,2,372.88,37.28
+2031D750,John Jones,Male,Brunei Darussalam,josephbrennan@yahoo.com,2025-06-11,Keyboard,3,292.71,58.53
+04FC6D82,Tammy Sellers,Male,Bouvet Island (Bouvetoya),john39@gmail.com,2025-01-08,Laptop,2,2115.34,380.76
+0837B8A3,Frederick Tate,Male,Sri Lanka,nadams@hotmail.com,2025-05-25,Headphones,3,311.49,31.14
+38602AB6,Austin Smith,Male,Albania,perezrebecca@jones-young.info,2025-02-18,Monitor,2,691.42,96.8
+38602AB6,Austin Smith,Male,Albania,perezrebecca@jones-young.info,2025-03-04,Smartphone,3,2262.24,339.33
+A491F0B2,Emily Rios,Male,Kuwait,donald88@burgess-patterson.org,2025-04-29,Headphones,2,208.88,20.88
+1A3D1FA7,Allison Hill,Male,Philippines,fjohnson@hall.com,2025-04-03,Smartwatch,1,204.63,24.56
+C07A30F2,Carlos Brewer,Male,Vietnam,ellisyolanda@jones.net,2025-03-13,Monitor,3,973.89,136.35
+B45ED1F0,Mark Mcclure,Male,Bangladesh,kendragalloway@delacruz.com,2025-05-06,Headphones,3,452.13,45.21
+38602AB6,Austin Smith,Male,Albania,perezrebecca@jones-young.info,2025-06-07,Monitor,2,560.96,78.54
+610461E3,John Hancock,Male,Afghanistan,sara74@yahoo.com,2025-04-09,Tablet,3,1072.65,171.63
+4FCCA39A,Tanya Campos,Male,Iran,clam@gmail.com,2025-02-28,Tablet,2,969.3,155.08
+4FCCA39A,Tanya Campos,Male,Iran,clam@gmail.com,2025-06-26,Laptop,1,1151.94,207.35
+38602AB6,Austin Smith,Male,Albania,perezrebecca@jones-young.info,2024-12-31,Monitor,2,586.0,82.04
+C07A30F2,Carlos Brewer,Male,Vietnam,ellisyolanda@jones.net,2025-01-17,Smartwatch,3,680.04,81.6
+0837B8A3,Frederick Tate,Male,Sri Lanka,nadams@hotmail.com,2025-06-14,Smartphone,3,2140.53,321.09
+9E8FC965,Todd Hudson,Male,Belgium,sarah35@gmail.com,2025-02-14,Monitor,1,218.68,30.62
+C07A30F2,Carlos Brewer,Male,Vietnam,ellisyolanda@jones.net,2025-01-29,Headphones,1,122.46,12.25
+4458A885,Roy Martin,Male,Reunion,amandasanchez@gray-mayo.net,2025-04-17,Laptop,2,2046.22,368.32
+DA4BD9CA,Erik Williams,Female,Malta,yuchristopher@jones.com,2025-02-15,Smartphone,3,2346.51,351.99
+27A0C3D7,Monica Logan,Female,Comoros,tanyariley@hotmail.com,2025-01-02,Smartwatch,2,515.5,61.86
+A748DBCF,Jeff Owens,Male,Oman,powellmatthew@wright.net,2025-01-16,Keyboard,3,201.24,40.26
+48F4EF12,Timothy Ibarra,Female,Cayman Islands,cheryl80@hotmail.com,2025-04-20,Laptop,1,1446.33,260.34
