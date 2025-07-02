@@ -1,122 +1,121 @@
-
-Customer_ID,Customer_Name,Gender,Country,Email,Date_of_Purchase,Product,Quantity,Revenue,Profit
-4458A885,Roy Martin,Male,Reunion,amandasanchez@gray-mayo.net,2025-03-21,Smartwatch,2,587.16,70.46
-B45ED1F0,Mark Mcclure,Male,Bangladesh,kendragalloway@delacruz.com,2025-04-12,Smartphone,2,1503.94,225.6
-2031D750,John Jones,Male,Brunei Darussalam,josephbrennan@yahoo.com,2025-05-12,Headphones,3,542.13,54.21
-3E351128,Carlos Walls,Male,Slovenia,glee@hotmail.com,2025-03-19,Smartphone,2,1978.5,296.78
-0B1F9163,Brent Abbott,Female,Saint Lucia,dudleynicholas@hotmail.com,2025-04-13,Headphones,3,548.82,54.87
-2031D750,John Jones,Male,Brunei Darussalam,josephbrennan@yahoo.com,2024-12-27,Smartwatch,1,255.69,30.68
-C07A30F2,Carlos Brewer,Male,Vietnam,ellisyolanda@jones.net,2025-01-16,Smartwatch,1,265.96,31.92
-C17AF08A,Daniel Bright,Male,Australia,courtneyconner@carlson-cruz.org,2025-01-09,Smartphone,2,1504.1,225.62
-9E8FC965,Todd Hudson,Male,Belgium,sarah35@gmail.com,2025-06-15,Monitor,2,465.06,65.1
-A491F0B2,Emily Rios,Male,Kuwait,donald88@burgess-patterson.org,2025-05-09,Headphones,3,510.54,51.06
-9E8FC965,Todd Hudson,Male,Belgium,sarah35@gmail.com,2025-06-19,Smartphone,1,843.65,126.55
-610461E3,John Hancock,Male,Afghanistan,sara74@yahoo.com,2025-01-23,Smartwatch,2,349.02,41.88
-1D53434B,Kendra Maddox DVM,Female,Pitcairn Islands,daniel62@yahoo.com,2025-04-10,Smartwatch,1,252.69,30.32
-C17AF08A,Daniel Bright,Male,Australia,courtneyconner@carlson-cruz.org,2025-01-01,Laptop,2,2805.04,504.9
-1D53434B,Kendra Maddox DVM,Female,Pitcairn Islands,daniel62@yahoo.com,2025-06-06,Smartphone,3,2053.17,307.98
-48F4EF12,Timothy Ibarra,Female,Cayman Islands,cheryl80@hotmail.com,2025-03-07,Monitor,2,485.06,67.9
-4FCCA39A,Tanya Campos,Male,Iran,clam@gmail.com,2025-04-18,Mouse,1,40.0,8.8
-C17AF08A,Daniel Bright,Male,Australia,courtneyconner@carlson-cruz.org,2025-04-12,Headphones,2,349.4,34.94
-27A0C3D7,Monica Logan,Female,Comoros,tanyariley@hotmail.com,2025-01-23,Keyboard,1,75.34,15.07
-134C6C92,Javier Ramirez,Female,Kenya,pearsonamber@novak.com,2025-03-19,Mouse,1,36.36,8.0
-B45ED1F0,Mark Mcclure,Male,Bangladesh,kendragalloway@delacruz.com,2025-01-19,Tablet,3,1464.69,234.36
-38602AB6,Austin Smith,Male,Albania,perezrebecca@jones-young.info,2025-01-03,Smartphone,3,2261.73,339.27
-3E351128,Carlos Walls,Male,Slovenia,glee@hotmail.com,2025-02-23,Headphones,1,197.11,19.71
-C07A30F2,Carlos Brewer,Male,Vietnam,ellisyolanda@jones.net,2025-03-06,Smartphone,3,2618.04,392.7
-0B49452D,Taylor Mathis Jr.,Female,Afghanistan,danagreen@hotmail.com,2025-06-18,Headphones,2,353.72,35.38
-B45ED1F0,Mark Mcclure,Male,Bangladesh,kendragalloway@delacruz.com,2025-06-25,Headphones,2,286.96,28.7
-1A3D1FA7,Allison Hill,Male,Philippines,fjohnson@hall.com,2025-05-29,Headphones,1,197.19,19.72
-134C6C92,Javier Ramirez,Female,Kenya,pearsonamber@novak.com,2025-06-11,Smartphone,2,1896.42,284.46
-9E8FC965,Todd Hudson,Male,Belgium,sarah35@gmail.com,2025-01-02,Smartwatch,1,172.93,20.75
-610461E3,John Hancock,Male,Afghanistan,sara74@yahoo.com,2025-06-18,Laptop,2,2598.94,467.8
-1A3D1FA7,Allison Hill,Male,Philippines,fjohnson@hall.com,2025-03-05,Smartphone,2,1943.28,291.5
-C17AF08A,Daniel Bright,Male,Australia,courtneyconner@carlson-cruz.org,2025-02-04,Laptop,3,3361.32,605.04
-0B1F9163,Brent Abbott,Female,Saint Lucia,dudleynicholas@hotmail.com,2025-05-07,Smartphone,1,892.76,133.91
-0B49452D,Taylor Mathis Jr.,Female,Afghanistan,danagreen@hotmail.com,2025-02-12,Tablet,2,677.04,108.32
-610461E3,John Hancock,Male,Afghanistan,sara74@yahoo.com,2025-05-04,Tablet,3,1138.56,182.16
-38602AB6,Austin Smith,Male,Albania,perezrebecca@jones-young.info,2025-01-14,Smartwatch,3,868.02,104.16
-48F4EF12,Timothy Ibarra,Female,Cayman Islands,cheryl80@hotmail.com,2025-03-04,Smartwatch,2,513.88,61.66
-C07A30F2,Carlos Brewer,Male,Vietnam,ellisyolanda@jones.net,2025-05-26,Monitor,3,862.86,120.81
-3E351128,Carlos Walls,Male,Slovenia,glee@hotmail.com,2025-04-13,Smartphone,1,699.16,104.87
-04FC6D82,Tammy Sellers,Male,Bouvet Island (Bouvetoya),john39@gmail.com,2025-06-15,Laptop,1,1294.15,232.95
-27A0C3D7,Monica Logan,Female,Comoros,tanyariley@hotmail.com,2025-06-13,Smartwatch,3,453.24,54.39
-9E8FC965,Todd Hudson,Male,Belgium,sarah35@gmail.com,2025-03-14,Laptop,1,1114.47,200.6
-04FC6D82,Tammy Sellers,Male,Bouvet Island (Bouvetoya),john39@gmail.com,2025-04-25,Smartphone,2,1611.32,241.7
-C07A30F2,Carlos Brewer,Male,Vietnam,ellisyolanda@jones.net,2025-05-20,Mouse,1,45.0,9.9
-43B409EF,Elizabeth Alvarado,Female,Brazil,josephjacobs@cooper.net,2025-01-25,Mouse,2,94.02,20.68
-38602AB6,Austin Smith,Male,Albania,perezrebecca@jones-young.info,2025-06-23,Smartwatch,3,492.45,59.1
-38602AB6,Austin Smith,Male,Albania,perezrebecca@jones-young.info,2025-06-24,Monitor,2,569.44,79.72
-43B409EF,Elizabeth Alvarado,Female,Brazil,josephjacobs@cooper.net,2025-02-09,Laptop,3,4010.04,721.8
-B45ED1F0,Mark Mcclure,Male,Bangladesh,kendragalloway@delacruz.com,2025-06-11,Laptop,2,2402.62,432.48
-B45ED1F0,Mark Mcclure,Male,Bangladesh,kendragalloway@delacruz.com,2025-01-26,Smartwatch,3,536.22,64.35
-3E351128,Carlos Walls,Male,Slovenia,glee@hotmail.com,2025-05-30,Tablet,2,853.12,136.5
-3E351128,Carlos Walls,Male,Slovenia,glee@hotmail.com,2025-06-01,Smartwatch,1,281.17,33.74
-3E351128,Carlos Walls,Male,Slovenia,glee@hotmail.com,2025-01-29,Smartphone,3,1860.72,279.12
-1A3D1FA7,Allison Hill,Male,Philippines,fjohnson@hall.com,2025-06-15,Smartphone,1,970.55,145.58
-0837B8A3,Frederick Tate,Male,Sri Lanka,nadams@hotmail.com,2025-03-16,Keyboard,1,83.99,16.8
-4FCCA39A,Tanya Campos,Male,Iran,clam@gmail.com,2024-12-30,Laptop,1,1082.32,194.82
-4FCCA39A,Tanya Campos,Male,Iran,clam@gmail.com,2025-01-29,Headphones,2,385.3,38.54
-2DBC2134,Nathan Cortez,Male,Macedonia,meagan89@hernandez.net,2025-05-18,Keyboard,3,296.28,59.25
-610461E3,John Hancock,Male,Afghanistan,sara74@yahoo.com,2025-06-23,Mouse,2,81.68,17.96
-A491F0B2,Emily Rios,Male,Kuwait,donald88@burgess-patterson.org,2025-02-28,Laptop,3,3868.77,696.39
-96DA1DAC,Michelle Miles,Male,Fiji,helenpeterson@lewis.com,2025-05-26,Monitor,3,634.29,88.8
-A748DBCF,Jeff Owens,Male,Oman,powellmatthew@wright.net,2025-06-24,Tablet,3,951.18,152.19
-0B1F9163,Brent Abbott,Female,Saint Lucia,dudleynicholas@hotmail.com,2025-03-15,Tablet,1,320.56,51.29
-C07A30F2,Carlos Brewer,Male,Vietnam,ellisyolanda@jones.net,2025-05-30,Smartwatch,3,631.71,75.81
-C17AF08A,Daniel Bright,Male,Australia,courtneyconner@carlson-cruz.org,2025-05-05,Laptop,2,2619.38,471.48
-C07A30F2,Carlos Brewer,Male,Vietnam,ellisyolanda@jones.net,2025-06-11,Monitor,1,386.94,54.17
-C07A30F2,Carlos Brewer,Male,Vietnam,ellisyolanda@jones.net,2025-05-17,Monitor,2,495.48,69.36
-4458A885,Roy Martin,Male,Reunion,amandasanchez@gray-mayo.net,2025-06-01,Headphones,1,145.72,14.57
-1A3D1FA7,Allison Hill,Male,Philippines,fjohnson@hall.com,2025-02-12,Mouse,3,220.44,48.51
-B45ED1F0,Mark Mcclure,Male,Bangladesh,kendragalloway@delacruz.com,2025-02-15,Smartphone,3,2445.15,366.78
-1D53434B,Kendra Maddox DVM,Female,Pitcairn Islands,daniel62@yahoo.com,2025-01-25,Tablet,1,579.98,92.8
-C17AF08A,Daniel Bright,Male,Australia,courtneyconner@carlson-cruz.org,2025-05-27,Monitor,2,514.0,71.96
-610461E3,John Hancock,Male,Afghanistan,sara74@yahoo.com,2025-05-11,Headphones,3,483.51,48.36
-134C6C92,Javier Ramirez,Female,Kenya,pearsonamber@novak.com,2025-01-15,Laptop,3,4001.79,720.33
-2DBC2134,Nathan Cortez,Male,Macedonia,meagan89@hernandez.net,2025-03-10,Smartphone,1,975.57,146.34
-1D53434B,Kendra Maddox DVM,Female,Pitcairn Islands,daniel62@yahoo.com,2025-06-13,Smartphone,3,2867.67,430.14
-610461E3,John Hancock,Male,Afghanistan,sara74@yahoo.com,2025-01-02,Tablet,3,1145.1,183.21
-A491F0B2,Emily Rios,Male,Kuwait,donald88@burgess-patterson.org,2025-06-10,Monitor,3,722.16,101.1
-1D53434B,Kendra Maddox DVM,Female,Pitcairn Islands,daniel62@yahoo.com,2025-03-27,Mouse,1,47.58,10.47
-0B1F9163,Brent Abbott,Female,Saint Lucia,dudleynicholas@hotmail.com,2025-02-07,Keyboard,1,108.05,21.61
-1A3D1FA7,Allison Hill,Male,Philippines,fjohnson@hall.com,2025-02-02,Monitor,3,1062.66,148.77
-1D53434B,Kendra Maddox DVM,Female,Pitcairn Islands,daniel62@yahoo.com,2025-06-02,Tablet,3,1567.11,250.74
-48F4EF12,Timothy Ibarra,Female,Cayman Islands,cheryl80@hotmail.com,2025-06-22,Keyboard,1,89.26,17.85
-0B1F9163,Brent Abbott,Female,Saint Lucia,dudleynicholas@hotmail.com,2025-03-25,Tablet,2,927.36,148.38
-27A0C3D7,Monica Logan,Female,Comoros,tanyariley@hotmail.com,2025-03-03,Tablet,1,428.94,68.63
-2DBC2134,Nathan Cortez,Male,Macedonia,meagan89@hernandez.net,2025-02-23,Monitor,1,379.8,53.17
-2031D750,John Jones,Male,Brunei Darussalam,josephbrennan@yahoo.com,2025-06-03,Smartwatch,3,756.93,90.84
-B45ED1F0,Mark Mcclure,Male,Bangladesh,kendragalloway@delacruz.com,2025-05-29,Monitor,2,712.04,99.68
-DA4BD9CA,Erik Williams,Female,Malta,yuchristopher@jones.com,2025-06-13,Tablet,1,577.73,92.44
-0837B8A3,Frederick Tate,Male,Sri Lanka,nadams@hotmail.com,2025-02-08,Tablet,1,564.42,90.31
-0837B8A3,Frederick Tate,Male,Sri Lanka,nadams@hotmail.com,2025-02-07,Monitor,2,712.96,99.82
-C07A30F2,Carlos Brewer,Male,Vietnam,ellisyolanda@jones.net,2024-12-30,Smartwatch,3,570.06,68.4
-B45ED1F0,Mark Mcclure,Male,Bangladesh,kendragalloway@delacruz.com,2025-05-03,Keyboard,2,222.1,44.42
-C17AF08A,Daniel Bright,Male,Australia,courtneyconner@carlson-cruz.org,2025-02-01,Smartwatch,2,544.98,65.4
-2031D750,John Jones,Male,Brunei Darussalam,josephbrennan@yahoo.com,2025-03-13,Headphones,1,182.05,18.21
-C17AF08A,Daniel Bright,Male,Australia,courtneyconner@carlson-cruz.org,2025-02-27,Laptop,2,2660.04,478.8
-04FC6D82,Tammy Sellers,Male,Bouvet Island (Bouvetoya),john39@gmail.com,2025-02-18,Headphones,2,372.88,37.28
-2031D750,John Jones,Male,Brunei Darussalam,josephbrennan@yahoo.com,2025-06-11,Keyboard,3,292.71,58.53
-04FC6D82,Tammy Sellers,Male,Bouvet Island (Bouvetoya),john39@gmail.com,2025-01-08,Laptop,2,2115.34,380.76
-0837B8A3,Frederick Tate,Male,Sri Lanka,nadams@hotmail.com,2025-05-25,Headphones,3,311.49,31.14
-38602AB6,Austin Smith,Male,Albania,perezrebecca@jones-young.info,2025-02-18,Monitor,2,691.42,96.8
-38602AB6,Austin Smith,Male,Albania,perezrebecca@jones-young.info,2025-03-04,Smartphone,3,2262.24,339.33
-A491F0B2,Emily Rios,Male,Kuwait,donald88@burgess-patterson.org,2025-04-29,Headphones,2,208.88,20.88
-1A3D1FA7,Allison Hill,Male,Philippines,fjohnson@hall.com,2025-04-03,Smartwatch,1,204.63,24.56
-C07A30F2,Carlos Brewer,Male,Vietnam,ellisyolanda@jones.net,2025-03-13,Monitor,3,973.89,136.35
-B45ED1F0,Mark Mcclure,Male,Bangladesh,kendragalloway@delacruz.com,2025-05-06,Headphones,3,452.13,45.21
-38602AB6,Austin Smith,Male,Albania,perezrebecca@jones-young.info,2025-06-07,Monitor,2,560.96,78.54
-610461E3,John Hancock,Male,Afghanistan,sara74@yahoo.com,2025-04-09,Tablet,3,1072.65,171.63
-4FCCA39A,Tanya Campos,Male,Iran,clam@gmail.com,2025-02-28,Tablet,2,969.3,155.08
-4FCCA39A,Tanya Campos,Male,Iran,clam@gmail.com,2025-06-26,Laptop,1,1151.94,207.35
-38602AB6,Austin Smith,Male,Albania,perezrebecca@jones-young.info,2024-12-31,Monitor,2,586.0,82.04
-C07A30F2,Carlos Brewer,Male,Vietnam,ellisyolanda@jones.net,2025-01-17,Smartwatch,3,680.04,81.6
-0837B8A3,Frederick Tate,Male,Sri Lanka,nadams@hotmail.com,2025-06-14,Smartphone,3,2140.53,321.09
-9E8FC965,Todd Hudson,Male,Belgium,sarah35@gmail.com,2025-02-14,Monitor,1,218.68,30.62
-C07A30F2,Carlos Brewer,Male,Vietnam,ellisyolanda@jones.net,2025-01-29,Headphones,1,122.46,12.25
-4458A885,Roy Martin,Male,Reunion,amandasanchez@gray-mayo.net,2025-04-17,Laptop,2,2046.22,368.32
-DA4BD9CA,Erik Williams,Female,Malta,yuchristopher@jones.com,2025-02-15,Smartphone,3,2346.51,351.99
-27A0C3D7,Monica Logan,Female,Comoros,tanyariley@hotmail.com,2025-01-02,Smartwatch,2,515.5,61.86
-A748DBCF,Jeff Owens,Male,Oman,powellmatthew@wright.net,2025-01-16,Keyboard,3,201.24,40.26
-48F4EF12,Timothy Ibarra,Female,Cayman Islands,cheryl80@hotmail.com,2025-04-20,Laptop,1,1446.33,260.34
+Customer_ID,Customer_Name,Age_Group,Customer_Gender,Country,State,Month,Order_Date,Product_Category,Sub_Category,Product,Order_Quantity,Unit_Cost,Unit_Price,Cost,Revenue,Profit
+7311,Jennifer Green,46-60,Female,Germany,North Carolina,January,2023-01-23,Books,Biography,Biography 46,8,8.85,57.3,70.8,458.4,387.59999999999997
+7634,Sandra Faulkner,36-45,Other,Australia,Minnesota,September,2023-06-22,Toys,Board Game,Board Game 19,2,52.95,70.63,105.9,141.26,35.359999999999985
+4578,Diane Campos,46-60,Other,USA,South Carolina,May,2023-06-22,Home & Kitchen,Mixer,Mixer 46,6,74.33,119.78,445.98,718.6800000000001,272.70000000000005
+5104,Ms. Michele Guzman,46-60,Female,Australia,Georgia,February,2023-03-22,Books,Comics,Comics 34,9,63.03,109.12,567.27,982.08,414.81000000000006
+2618,Stephanie Sutton,46-60,Female,Canada,New Mexico,February,2024-03-13,Electronics,Mobile,Mobile 94,1,13.86,56.66,13.86,56.66,42.8
+2649,Eugene Bowman,26-35,Other,Germany,Indiana,August,2023-04-17,Home & Kitchen,Mixer,Mixer 12,4,23.15,53.69,92.6,214.76,122.16
+8815,Joseph Brown,18-25,Female,Australia,Oklahoma,December,2024-04-13,Electronics,Headphones,Headphones 38,8,88.13,138.04,705.04,1104.32,399.28
+2528,Jennifer Summers,36-45,Female,USA,Texas,July,2023-06-03,Electronics,Headphones,Headphones 77,10,82.37,111.68,823.7,1116.8000000000002,293.10000000000014
+1018,Samantha Cook,26-35,Male,Australia,Washington,February,2023-02-11,Books,Comics,Comics 85,4,59.69,77.75,238.76,311.0,72.24000000000001
+2031,Keith Allen,26-35,Male,USA,Georgia,August,2023-09-16,Home & Kitchen,Lamp,Lamp 90,3,11.56,47.1,34.68,141.3,106.62
+9896,Bobby Flores,26-35,Male,Australia,North Carolina,April,2023-12-15,Toys,Doll,Doll 54,9,84.6,113.21,761.4,1018.89,257.49
+2786,Eddie Martinez,18-25,Female,Australia,Michigan,June,2024-01-21,Toys,Action Figure,Action Figure 15,6,47.8,82.51,286.79999999999995,495.06000000000006,208.2600000000001
+9852,Robert Payne,18-25,Other,Canada,Maine,April,2023-01-28,Books,Comics,Comics 48,5,85.28,101.22,426.4,506.1,79.70000000000005
+2501,Janice Johnston,26-35,Male,Australia,Maine,July,2023-02-07,Clothing,Jacket,Jacket 82,3,45.48,53.28,136.44,159.84,23.400000000000006
+4102,Amanda Zavala,18-25,Female,USA,Kentucky,June,2024-05-23,Toys,Puzzle,Puzzle 48,10,7.54,41.11,75.4,411.1,335.70000000000005
+2131,Peter Mcdowell,18-25,Female,Canada,Arizona,June,2023-04-02,Electronics,Mobile,Mobile 94,3,62.52,76.28,187.56,228.84,41.28
+9857,Sara Warren,18-25,Male,USA,North Dakota,March,2024-01-02,Electronics,Mobile,Mobile 83,5,56.7,89.63,283.5,448.15,164.64999999999998
+4858,Stephanie Lawrence,18-25,Other,USA,Nebraska,June,2023-10-27,Home & Kitchen,Chair,Chair 90,8,46.43,54.18,371.44,433.44,62.0
+5509,Matthew Davies,26-35,Other,Canada,Minnesota,August,2023-06-04,Books,Non-Fiction,Non-Fiction 99,8,29.71,75.41,237.68,603.28,365.59999999999997
+6313,Katelyn Mccoy,18-25,Other,Germany,Illinois,July,2024-04-14,Electronics,Laptop,Laptop 86,5,85.32,105.72,426.59999999999997,528.6,102.00000000000006
+1265,Autumn Robinson,36-45,Other,India,Hawaii,August,2023-08-30,Clothing,Shirt,Shirt 50,10,49.8,73.25,498.0,732.5,234.5
+7981,Ashlee Thomas,36-45,Other,USA,Vermont,November,2024-06-03,Home & Kitchen,Cooker,Cooker 70,2,58.26,63.82,116.52,127.64,11.120000000000005
+1741,Madison Zuniga,36-45,Other,India,Rhode Island,April,2023-12-31,Home & Kitchen,Cooker,Cooker 76,6,27.81,75.7,166.85999999999999,454.20000000000005,287.34000000000003
+2212,Mark Obrien,18-25,Male,Australia,Oregon,February,2023-06-16,Toys,Board Game,Board Game 25,7,72.98,95.44,510.86,668.0799999999999,157.2199999999999
+7409,Roy Wilson,46-60,Male,Germany,Rhode Island,June,2024-02-19,Home & Kitchen,Cooker,Cooker 90,7,27.74,61.42,194.17999999999998,429.94,235.76000000000002
+4188,Cathy Martinez,46-60,Male,India,Indiana,June,2023-12-12,Toys,Doll,Doll 90,3,78.36,115.27,235.07999999999998,345.81,110.73000000000002
+2000,Allison Coleman,18-25,Male,Germany,Connecticut,September,2023-10-04,Clothing,Dress,Dress 42,9,55.12,82.05,496.08,738.4499999999999,242.36999999999995
+2146,Matthew Bell,26-35,Other,USA,Idaho,February,2024-05-19,Home & Kitchen,Lamp,Lamp 93,7,9.74,51.76,68.18,362.32,294.14
+9251,Kyle Lyons,18-25,Male,USA,Montana,July,2024-02-07,Clothing,Shirt,Shirt 92,6,43.17,78.7,259.02,472.20000000000005,213.18000000000006
+5262,Nicholas Massey,36-45,Female,Canada,Oregon,July,2023-01-16,Electronics,Mobile,Mobile 13,4,23.09,55.47,92.36,221.88,129.51999999999998
+4332,Amy Lowe,18-25,Female,Canada,Hawaii,April,2023-11-15,Books,Biography,Biography 84,8,64.63,70.61,517.04,564.88,47.84000000000003
+9674,Kyle Ramos,18-25,Male,Canada,Idaho,November,2023-10-23,Toys,Action Figure,Action Figure 88,1,15.94,27.89,15.94,27.89,11.950000000000001
+8727,Stephanie Golden,46-60,Other,Germany,Maryland,February,2024-04-25,Home & Kitchen,Chair,Chair 82,1,94.92,142.15,94.92,142.15,47.230000000000004
+6851,Matthew Hernandez,36-45,Male,Canada,Vermont,November,2023-02-05,Books,Comics,Comics 20,7,87.78,100.8,614.46,705.6,91.13999999999999
+8503,Gabriella Williams,36-45,Other,USA,Louisiana,March,2023-09-26,Home & Kitchen,Chair,Chair 6,2,37.06,58.58,74.12,117.16,43.03999999999999
+4934,Karen Bishop,46-60,Other,Canada,Utah,June,2023-02-09,Home & Kitchen,Cooker,Cooker 38,6,19.19,50.45,115.14000000000001,302.70000000000005,187.56000000000003
+3168,Jasmine Perry,26-35,Other,USA,Tennessee,June,2024-04-11,Electronics,Camera,Camera 39,5,74.4,121.42,372.0,607.1,235.10000000000002
+1024,Melissa Moore,46-60,Female,India,Iowa,May,2024-02-09,Books,Comics,Comics 44,9,33.43,43.32,300.87,389.88,89.00999999999999
+8342,Shawn Carroll,36-45,Female,Canada,Nebraska,February,2023-05-03,Electronics,Camera,Camera 22,1,16.02,43.42,16.02,43.42,27.400000000000002
+7590,Latoya Barton,18-25,Male,Canada,Virginia,March,2024-02-18,Toys,Doll,Doll 96,2,81.58,131.2,163.16,262.4,99.23999999999998
+3714,David Moore,36-45,Female,Germany,North Dakota,February,2023-12-21,Clothing,Shirt,Shirt 75,9,41.56,50.97,374.04,458.73,84.69
+1001,Kathleen Collins,26-35,Female,Canada,New Jersey,May,2024-05-22,Clothing,Dress,Dress 46,5,12.95,27.86,64.75,139.3,74.55000000000001
+7801,Zachary Schultz,46-60,Other,Canada,Colorado,May,2023-02-22,Electronics,Mobile,Mobile 16,1,83.09,126.47,83.09,126.47,43.379999999999995
+3138,Mrs. Meghan Stewart,26-35,Male,Canada,Indiana,December,2023-01-22,Books,Biography,Biography 59,4,29.37,63.21,117.48,252.84,135.36
+1038,Miss Lisa Lee,46-60,Male,Australia,Rhode Island,March,2023-10-07,Books,Comics,Comics 52,10,56.91,68.72,569.0999999999999,687.2,118.10000000000014
+4252,Diana Good,46-60,Other,Canada,Connecticut,May,2023-02-05,Books,Biography,Biography 70,8,69.54,114.49,556.32,915.92,359.5999999999999
+7499,Alison Sloan,36-45,Male,Australia,Delaware,June,2023-09-18,Toys,Board Game,Board Game 19,6,5.92,42.67,35.519999999999996,256.02,220.5
+3185,Ruth Newman,18-25,Male,Australia,Delaware,July,2023-10-24,Home & Kitchen,Cooker,Cooker 6,8,85.02,116.25,680.16,930.0,249.84000000000003
+5561,Amanda Harris,36-45,Male,Canada,Kentucky,December,2023-08-01,Electronics,Laptop,Laptop 84,8,17.4,35.92,139.2,287.36,148.16000000000003
+6156,Teresa Browning,18-25,Other,USA,Arizona,December,2024-06-12,Books,Comics,Comics 87,9,52.97,98.52,476.73,886.68,409.94999999999993
+9101,Stephanie Bowman,36-45,Other,Australia,Mississippi,August,2023-12-15,Toys,Puzzle,Puzzle 54,4,75.96,121.72,303.84,486.88,183.04000000000002
+3921,Kevin Smith,18-25,Other,Canada,Georgia,June,2024-01-31,Books,Biography,Biography 39,1,62.71,78.22,62.71,78.22,15.509999999999998
+6462,Jacob Davis,36-45,Female,Germany,Wyoming,March,2023-09-14,Toys,Action Figure,Action Figure 50,5,36.61,63.82,183.05,319.1,136.05
+1584,Christopher Holden,36-45,Male,USA,Maine,July,2023-08-02,Electronics,Laptop,Laptop 62,5,65.89,76.62,329.45,383.1,53.650000000000034
+7468,Beverly Wilson PhD,26-35,Female,Germany,Arkansas,December,2023-04-29,Books,Non-Fiction,Non-Fiction 5,2,51.72,95.57,103.44,191.14,87.69999999999999
+3942,Monica Turner,26-35,Male,USA,Michigan,May,2023-12-04,Toys,Doll,Doll 77,8,41.73,48.85,333.84,390.8,56.960000000000036
+7794,Justin Olson,36-45,Male,Germany,Michigan,April,2023-09-06,Toys,Board Game,Board Game 100,9,64.85,74.59,583.65,671.3100000000001,87.66000000000008
+6630,Brian Jimenez,36-45,Other,USA,Arizona,July,2023-12-28,Books,Fiction,Fiction 88,8,88.72,121.18,709.76,969.44,259.68000000000006
+6489,Stephanie Gillespie,36-45,Other,USA,South Dakota,May,2023-06-16,Toys,Action Figure,Action Figure 67,7,79.91,90.63,559.37,634.41,75.03999999999996
+7153,Wendy Miller,46-60,Female,USA,Colorado,June,2023-06-06,Clothing,Shirt,Shirt 6,4,79.3,104.31,317.2,417.24,100.04000000000002
+4621,Adam Long,26-35,Male,USA,North Dakota,September,2023-12-05,Electronics,Camera,Camera 100,9,29.26,35.46,263.34000000000003,319.14,55.799999999999955
+8348,Rachel Klein,46-60,Other,Germany,Indiana,October,2023-01-10,Toys,Doll,Doll 11,3,53.18,100.73,159.54,302.19,142.65
+2370,William Green,18-25,Female,Germany,Wyoming,May,2023-02-22,Electronics,Camera,Camera 88,3,10.98,34.66,32.94,103.97999999999999,71.03999999999999
+8065,Brian Short,36-45,Male,India,Vermont,November,2023-06-09,Books,Fiction,Fiction 10,6,52.18,96.06,313.08,576.36,263.28000000000003
+9614,Michael Wilson,18-25,Male,India,Montana,June,2023-12-19,Electronics,Headphones,Headphones 10,3,70.72,91.27,212.16,273.81,61.650000000000006
+4395,Yolanda Salinas,18-25,Female,India,South Carolina,December,2024-01-07,Toys,Board Game,Board Game 89,2,24.76,38.98,49.52,77.96,28.43999999999999
+2714,James Payne,46-60,Female,India,Georgia,February,2023-10-26,Electronics,Laptop,Laptop 17,2,86.62,100.03,173.24,200.06,26.819999999999993
+8993,Jared Frazier,36-45,Other,India,North Dakota,September,2023-10-28,Electronics,Laptop,Laptop 24,5,39.41,65.71,197.04999999999998,328.54999999999995,131.49999999999997
+6283,Yvette Reid,46-60,Male,Canada,Illinois,December,2023-11-27,Toys,Puzzle,Puzzle 29,3,14.75,45.89,44.25,137.67000000000002,93.42000000000002
+4584,Michael Burgess,46-60,Other,USA,Massachusetts,November,2024-05-21,Home & Kitchen,Cooker,Cooker 17,6,27.48,40.76,164.88,244.56,79.68
+1581,Shelly Morrison,46-60,Female,Australia,Georgia,October,2024-02-18,Toys,Puzzle,Puzzle 54,3,42.41,79.01,127.22999999999999,237.03000000000003,109.80000000000004
+5823,Renee Jones,46-60,Other,India,Colorado,February,2024-03-17,Clothing,Dress,Dress 82,4,33.31,54.27,133.24,217.08,83.84
+1645,Carlos Turner,46-60,Male,India,Wisconsin,July,2023-06-24,Toys,Puzzle,Puzzle 38,6,40.76,46.14,244.56,276.84000000000003,32.28000000000003
+6416,Rebecca Melton,18-25,Other,Australia,New Jersey,April,2023-01-02,Books,Fiction,Fiction 89,5,95.28,136.12,476.4,680.6,204.20000000000005
+9273,Joseph Johnson,46-60,Male,Canada,Colorado,March,2023-05-25,Clothing,Dress,Dress 59,7,93.19,106.53,652.3299999999999,745.71,93.38000000000011
+9486,Wanda Burgess,46-60,Male,India,Wisconsin,January,2023-02-14,Home & Kitchen,Cooker,Cooker 1,2,38.76,72.18,77.52,144.36,66.84000000000002
+5745,Linda Petersen,26-35,Female,Germany,New Mexico,October,2024-03-28,Books,Biography,Biography 12,5,5.74,24.18,28.700000000000003,120.9,92.2
+7366,Cynthia Hancock,18-25,Female,USA,Alaska,September,2023-05-09,Books,Non-Fiction,Non-Fiction 1,1,56.66,79.9,56.66,79.9,23.24000000000001
+1003,Elizabeth Hudson,46-60,Male,India,Michigan,June,2023-12-16,Home & Kitchen,Lamp,Lamp 46,7,54.98,86.15,384.85999999999996,603.0500000000001,218.1900000000001
+9085,Terri Turner,36-45,Other,India,Nebraska,February,2023-01-10,Home & Kitchen,Cooker,Cooker 16,5,61.56,68.16,307.8,340.79999999999995,32.99999999999994
+7286,Martin Anderson,46-60,Female,India,Maine,August,2024-05-06,Toys,Board Game,Board Game 67,2,89.62,128.91,179.24,257.82,78.57999999999998
+6472,Andrew Butler,46-60,Other,India,New York,December,2023-09-21,Clothing,Jeans,Jeans 38,9,55.48,78.97,499.32,710.73,211.41000000000003
+2337,Brittany Hatfield,18-25,Female,Germany,Nebraska,May,2023-07-12,Books,Comics,Comics 76,2,58.98,70.18,117.96,140.36,22.40000000000002
+8639,Anthony Ruiz,46-60,Male,Germany,Georgia,May,2023-03-13,Books,Non-Fiction,Non-Fiction 63,8,58.16,76.61,465.28,612.88,147.60000000000002
+1531,Brandi Nguyen,36-45,Male,Germany,Vermont,May,2024-03-10,Toys,Action Figure,Action Figure 7,8,51.81,99.94,414.48,799.52,385.03999999999996
+6679,Richard Waters,18-25,Other,USA,Delaware,February,2023-10-13,Toys,Board Game,Board Game 88,1,7.43,33.65,7.43,33.65,26.22
+8654,Taylor Santos,36-45,Other,India,Utah,July,2023-06-28,Books,Fiction,Fiction 94,1,39.32,49.55,39.32,49.55,10.229999999999997
+5855,Bethany Buck,46-60,Female,India,Maine,October,2023-06-23,Clothing,Jeans,Jeans 50,2,76.4,94.36,152.8,188.72,35.91999999999999
+2991,Rachel Lopez,26-35,Female,Canada,Montana,April,2023-03-06,Clothing,Jacket,Jacket 68,7,45.06,90.43,315.42,633.01,317.59
+7087,Joy Clarke,46-60,Female,Germany,California,January,2023-06-11,Home & Kitchen,Cooker,Cooker 50,6,24.84,38.25,149.04,229.5,80.46000000000001
+1655,Dr. Tony Estrada,46-60,Male,Canada,Oregon,September,2023-04-23,Clothing,Jeans,Jeans 82,1,46.73,60.92,46.73,60.92,14.190000000000005
+4762,Robert Oneal,26-35,Other,India,Wyoming,March,2024-05-31,Electronics,Laptop,Laptop 79,3,39.54,77.98,118.62,233.94,115.32
+9580,Eric Wilson,46-60,Male,Australia,Nevada,July,2024-01-29,Electronics,Headphones,Headphones 86,7,78.29,123.02,548.0300000000001,861.14,313.1099999999999
+7914,Taylor Perry,26-35,Female,India,Connecticut,April,2024-03-21,Toys,Doll,Doll 6,8,60.19,87.25,481.52,698.0,216.48000000000002
+3558,Amanda Griffin,26-35,Male,Germany,Utah,May,2023-09-30,Electronics,Mobile,Mobile 88,1,20.47,25.64,20.47,25.64,5.170000000000002
+1493,Sean Nguyen III,36-45,Other,USA,Minnesota,October,2023-11-15,Clothing,Dress,Dress 78,4,57.99,72.93,231.96,291.72,59.76000000000002
+2988,Allen Bailey,36-45,Male,Australia,Alabama,September,2023-10-19,Electronics,Headphones,Headphones 6,6,35.68,61.19,214.07999999999998,367.14,153.06
+6993,Steven Clark,26-35,Male,India,Indiana,November,2023-01-14,Clothing,Jacket,Jacket 87,6,12.61,56.76,75.66,340.56,264.9
+3018,Elaine Norris,36-45,Other,Canada,Rhode Island,November,2024-03-14,Home & Kitchen,Chair,Chair 6,8,54.11,76.42,432.88,611.36,178.48000000000002
+3324,Brian Cooper,18-25,Female,Germany,Kentucky,November,2023-10-15,Home & Kitchen,Mixer,Mixer 59,8,5.87,33.16,46.96,265.28,218.31999999999996
+1457,Heidi Kennedy,46-60,Male,Germany,Maine,March,2023-09-22,Books,Fiction,Fiction 79,3,13.13,28.98,39.39,86.94,47.55
+6357,Willie Garcia,18-25,Male,Canada,Pennsylvania,December,2024-06-23,Electronics,Camera,Camera 63,7,58.11,103.01,406.77,721.07,314.30000000000007
+3562,Charles Martinez,36-45,Female,USA,Iowa,July,2023-11-22,Clothing,Jeans,Jeans 72,6,84.84,102.39,509.04,614.34,105.30000000000001
+9328,Paul Carter,46-60,Other,India,Nebraska,February,2023-12-17,Home & Kitchen,Cooker,Cooker 35,9,72.55,112.54,652.9499999999999,1012.86,359.9100000000001
+1757,Lindsay Long,26-35,Other,Germany,Vermont,December,2023-07-14,Clothing,Shirt,Shirt 32,2,16.28,56.54,32.56,113.08,80.52
+3163,Juan Yang,46-60,Male,USA,Georgia,March,2024-03-18,Clothing,Jacket,Jacket 50,1,88.58,138.45,88.58,138.45,49.86999999999999
+7917,Henry Wright,36-45,Male,Canada,South Dakota,February,2023-05-26,Home & Kitchen,Mixer,Mixer 9,4,97.26,127.67,389.04,510.68,121.63999999999999
+9670,Jason Butler,36-45,Other,Canada,Washington,October,2023-01-07,Toys,Action Figure,Action Figure 18,8,69.09,84.6,552.72,676.8,124.07999999999993
+8230,Edward Ruiz,46-60,Male,Canada,Idaho,March,2024-06-07,Electronics,Headphones,Headphones 66,3,39.86,73.43,119.58,220.29000000000002,100.71000000000002
+2779,Justin Watts,26-35,Male,Canada,Vermont,May,2023-06-09,Electronics,Laptop,Laptop 30,8,77.68,117.84,621.44,942.72,321.28
+7533,Javier Thompson,18-25,Other,USA,New Jersey,March,2024-01-29,Books,Comics,Comics 68,8,62.81,73.77,502.48,590.16,87.67999999999995
+9574,Joel Walsh,26-35,Other,Germany,New Mexico,May,2024-01-05,Toys,Action Figure,Action Figure 95,4,51.47,70.36,205.88,281.44,75.56
+4336,Ronald Cole,46-60,Other,Canada,New Jersey,July,2024-04-20,Books,Comics,Comics 41,3,71.9,80.44,215.70000000000002,241.32,25.619999999999976
+4583,Randy Fuller,26-35,Female,Germany,Ohio,June,2023-02-07,Home & Kitchen,Lamp,Lamp 86,6,94.66,109.05,567.96,654.3,86.33999999999992
+3559,Paul Davis,36-45,Other,Australia,New York,September,2024-02-26,Clothing,Jacket,Jacket 8,1,37.7,50.0,37.7,50.0,12.299999999999997
+4807,Jennifer Chen,26-35,Male,USA,Alaska,March,2023-08-22,Clothing,Jacket,Jacket 29,1,7.09,40.34,7.09,40.34,33.25
+5424,Amanda Scott,26-35,Male,Germany,North Dakota,July,2023-01-17,Home & Kitchen,Mixer,Mixer 56,7,82.99,103.51,580.93,724.57,143.6400000000001
+7491,Paul Gomez,46-60,Male,Germany,Wisconsin,October,2024-01-06,Clothing,Jacket,Jacket 34,7,34.64,68.85,242.48000000000002,481.94999999999993,239.4699999999999
+4211,Amanda Sparks,46-60,Female,Canada,Maryland,April,2023-06-12,Toys,Doll,Doll 1,2,77.11,107.52,154.22,215.04,60.81999999999999
+6568,Scott Macdonald,18-25,Female,Canada,Wisconsin,February,2023-07-19,Toys,Board Game,Board Game 23,3,64.08,98.87,192.24,296.61,104.37
