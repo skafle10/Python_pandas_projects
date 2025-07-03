@@ -73,18 +73,18 @@ def fuzzy_matcher(df,targets,threshold):
 def top_customers(df):
     targets = ["Customer_ID","Customer_Name","Product","Order_Quantity","Profits"]
     match = fuzzy_matcher(df,targets,THRESHOLD)
-    print(" The dict so obtained is ")
-    print(match)
-    print(match["Profits"])
-    print(df[match["Profits"]])
-             
+
     if match:
         try: 
             highest_ordering_customer = df.groupby(match["Customer_ID"])[match["Order_Quantity"]].sum().sort_values(ascending=False)
-            top_purchased_items_individually = df.groupby([match["Customer_ID"],match["Customer_Name"],match["Product"]]) [match["Order_Quantity"]].sum().reset_index().sort_values(by = "Order_Quantity",ascending=False)
 
-            profit_collected_individually = df.groupby([match["Customer_ID"],match["Customer_Name"]])[match["Profits"]].sum().reset_index().sort_values(by="Profits",ascending=False)
-            print(profit_collected_individually)
+            top_purchased_items_individually = df.groupby([match["Customer_ID"],match["Customer_Name"],match["Product"]]) [match["Order_Quantity"]].sum().reset_index().sort_values(by = match["Order_Quantity"],ascending=False)
+
+            most_profitable_customer = df.groupby([match["Customer_ID"],match["Customer_Name"]])[match["Profits"]].sum().reset_index().sort_values(by=match["Profit"],ascending=False)
+            
+
+            return highest_ordering_customer,top_purchased_items_individually,most_profitable_customer
+
 
         except Exception as e:
             print(f"Error in analyzing top customers due to : {e}")
@@ -92,6 +92,23 @@ def top_customers(df):
 
 
 
+'''Behavioural analysis of customer'''
+def behavioural_analysis(df):
+    targets = ["Date","Order_Quantity","Customer_ID"]
+    match = fuzzy_matcher(df,targets,THRESHOLD)
+    if match:
+
+        df["month"] = df[match["Date"]].dt.to_period("M")
+        no_of_monthly_orders =  df.groupby("month")[match["Order_Quantity"]].sum()
+
+        frequency_of_monthly_orders = df.groupby("month")[match["Order_Quantity"]].size()
+
+        customers_monthly_order_frequency = df.groupby(["month",match["Customer_ID"]])[match["Order_Quantity"]].size()
+
+        customers_total_orders_monthlty = df.groupby(["month",match["Customer_ID"]])[match["Order_Quantity"]].sum().sort_values(ascending=False)
+
+        print("The monthly order of each individual is")
+        print(customers_total_orders_monthlty)
 
 
 
@@ -106,6 +123,7 @@ def main():
     to_date_time(df)
     clean_text(df)
     top_customers(df)
+    behavioural_analysis(df)
 
     
 
