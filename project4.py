@@ -48,6 +48,38 @@ def clean_text(df):
 
 
 
+'''Proceed based on the requirement of the user'''
+def user_requirements(df):
+    print("==Do you want to filter the data or see insights for all the datas?==")
+    user_choice = input("==Enter (F) for filtered, (U) for unfiltered==").upper()
+    try:
+            
+        if user_choice == "F":
+            try:
+                print("=====Preceiding with the filtered datas====")
+                apply_filter = input("Enter what you want to apply filter on: \n Dates (D), Country (C), Product_Category(P)")
+                if apply_filter == "D":
+                    filter_by_date(df)
+
+                elif apply_filter == "C":
+                    filter_by_country(df)
+
+                elif apply_filter == "P":
+                    filter_by_product_category(df)
+                else:
+                    print("Wrong command")
+
+            except Exception as e:
+                print(f"Error in gathering the filters due to {e}")
+
+        elif user_choice == "U":
+            pass
+
+    except Exception as e:
+        print(f"Error in gathering user requirements due to {e}")
+
+
+
 
 '''A reuseable fuzzy matcher function'''
 def fuzzy_matcher(df,targets,threshold):
@@ -112,6 +144,45 @@ def behavioural_analysis(df):
 
 
 
+    '''apply filter based on given constraints (if it is needed)'''
+def filter_by_date(df,start,end):
+    targets = ["Date"]
+    match = fuzzy_matcher(df,targets,THRESHOLD)
+    if match:
+        try:
+            filtered_df = df[  (df(match["Date"]) >= start) & ( df(match["Date"]) <= end   ) ]
+            return filtered_df
+        except Exception as e:
+            print(f"Error in filtering the df by date due to {e}")
+
+
+
+def filter_by_country(df,country_name):
+    targets = ["Country"]
+    match = fuzzy_matcher(df,targets,THRESHOLD)
+    if match:
+        try:
+            filtered_df = df[df[match["Country"]]] == country_name
+            return filtered_df
+            
+        except Exception as e:
+            print(f"Error in filterig df by country due to {e}")
+
+
+
+def filter_by_product_category(df,product_category):
+    targets = ["Product_Category"]
+    match = fuzzy_matcher(df,targets,THRESHOLD)
+    if match:
+        try:
+            filtered_df = df[df[match["Product_Category"]]] == product_category
+            return filtered_df
+        
+        except Exception as e:
+            print(f"Error in filtering the data by product category due to {e}")
+
+
+
 def main():
     
     try:
@@ -122,6 +193,8 @@ def main():
 
     to_date_time(df)
     clean_text(df)
+    df = user_requirements(df)
+
     top_customers(df)
     behavioural_analysis(df)
 
