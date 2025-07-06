@@ -49,23 +49,25 @@ def clean_text(df):
 
 
 '''Proceed based on the requirement of the user'''
-def user_requirements(df):
+def user_requirements(df,user_choice):
     print("==Do you want to filter the data or see insights for all the datas?==")
-    user_choice = input("==Enter (F) for filtered, (U) for unfiltered==").upper()
+    # user_choice = input("==Enter (F) for filtered, (U) for unfiltered==").upper()
     try:
             
         if user_choice == "F":
             try:
                 print("=====Preceiding with the filtered datas====")
-                apply_filter = input("Enter what you want to apply filter on: \n Dates (D), Country (C), Product_Category(P)")
+                apply_filter = input("Enter what you want to apply filter on: \n Dates (D), Country (C), Product_Category(P)").upper()
                 if apply_filter == "D":
                     filter_by_date(df)
 
                 elif apply_filter == "C":
-                    filter_by_country(df)
+                    country_name = input("Enter the country name: ").upper()
+                    filter_by_country(df,country_name)
 
                 elif apply_filter == "P":
-                    filter_by_product_category(df)
+                    product_category = input("Enter the product category: ")
+                    filter_by_product_category(df,product_category)
                 else:
                     print("Wrong command")
 
@@ -73,7 +75,7 @@ def user_requirements(df):
                 print(f"Error in gathering the filters due to {e}")
 
         elif user_choice == "U":
-            pass
+            return df
 
     except Exception as e:
         print(f"Error in gathering user requirements due to {e}")
@@ -162,7 +164,12 @@ def filter_by_country(df,country_name):
     match = fuzzy_matcher(df,targets,THRESHOLD)
     if match:
         try:
-            filtered_df = df[df[match["Country"]]] == country_name
+            print("The input gives us : ")
+            print(df[match["Country"]])
+            filtered_df = df[ df[match["Country"]] == country_name]
+            print("The filtered df by country is ")
+            print(filtered_df)
+
             return filtered_df
             
         except Exception as e:
@@ -193,7 +200,19 @@ def main():
 
     to_date_time(df)
     clean_text(df)
-    df = user_requirements(df)
+
+    user_choice = input("Do you want Filtered(F) or Unfiltered(U) data ").upper()
+    if user_choice == "F":
+        try:
+            df = user_requirements(df,user_choice)
+        
+        except Exception as e:
+            print(f"Error {e}")
+
+    elif user_choice == "U":
+         df = user_requirements(df,user_choice)
+
+
 
     top_customers(df)
     behavioural_analysis(df)
