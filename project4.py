@@ -59,15 +59,17 @@ def user_requirements(df,user_choice):
                 print("=====Preceiding with the filtered datas====")
                 apply_filter = input("Enter what you want to apply filter on: \n Dates (D), Country (C), Product_Category(P)").upper()
                 if apply_filter == "D":
-                    filter_by_date(df)
+                    start_date = pd.to_datetime(input("Enter the starting date: "))
+                    end_date = pd.to_datetime(input("Enter  the end date: "))
+                    return filter_by_date(df,start_date,end_date)
 
                 elif apply_filter == "C":
-                    country_name = input("Enter the country name: ").upper()
-                    filter_by_country(df,country_name)
+                    country_name = input("Enter the country name: ").title()
+                    return filter_by_country(df,country_name)
 
                 elif apply_filter == "P":
-                    product_category = input("Enter the product category: ")
-                    filter_by_product_category(df,product_category)
+                    product_category = input("Enter the product category: ").title()
+                    return filter_by_product_category(df,product_category)
                 else:
                     print("Wrong command")
 
@@ -114,7 +116,7 @@ def top_customers(df):
 
             top_purchased_items_individually = df.groupby([match["Customer_ID"],match["Customer_Name"],match["Product"]]) [match["Order_Quantity"]].sum().reset_index().sort_values(by = match["Order_Quantity"],ascending=False)
 
-            most_profitable_customer = df.groupby([match["Customer_ID"],match["Customer_Name"]])[match["Profits"]].sum().reset_index().sort_values(by=match["Profit"],ascending=False)
+            most_profitable_customer = df.groupby([match["Customer_ID"],match["Customer_Name"]])[match["Profits"]].sum().reset_index().sort_values(by=match["Profits"],ascending=False)
             
 
             return highest_ordering_customer,top_purchased_items_individually,most_profitable_customer
@@ -141,9 +143,6 @@ def behavioural_analysis(df):
 
         customers_total_orders_monthlty = df.groupby(["month",match["Customer_ID"]])[match["Order_Quantity"]].sum().sort_values(ascending=False)
 
-        print("The monthly order of each individual is")
-        print(customers_total_orders_monthlty)
-
 
 
     '''apply filter based on given constraints (if it is needed)'''
@@ -152,7 +151,7 @@ def filter_by_date(df,start,end):
     match = fuzzy_matcher(df,targets,THRESHOLD)
     if match:
         try:
-            filtered_df = df[  (df(match["Date"]) >= start) & ( df(match["Date"]) <= end   ) ]
+            filtered_df = df[  (df[match["Date"]] >= start) & ( df[match["Date"]] <= end   ) ]
             return filtered_df
         except Exception as e:
             print(f"Error in filtering the df by date due to {e}")
@@ -164,8 +163,6 @@ def filter_by_country(df,country_name):
     match = fuzzy_matcher(df,targets,THRESHOLD)
     if match:
         try:
-            print("The input gives us : ")
-            print(df[match["Country"]])
             filtered_df = df[ df[match["Country"]] == country_name]
             print("The filtered df by country is ")
             print(filtered_df)
@@ -182,7 +179,7 @@ def filter_by_product_category(df,product_category):
     match = fuzzy_matcher(df,targets,THRESHOLD)
     if match:
         try:
-            filtered_df = df[df[match["Product_Category"]]] == product_category
+            filtered_df = df[ df[match["Product_Category"]] == product_category]
             return filtered_df
         
         except Exception as e:
