@@ -1,7 +1,7 @@
 
 
 '''TOP CUSTOMER ANALYZER'''
-
+import warnings
 import pandas as pd
 from rapidfuzz import process
 
@@ -18,13 +18,14 @@ def load_data(file_name):
         return df
     
     except Exception as e:
-        print(f"Error in loading the data due to: {e}")
+        return f"Error in loading the data due to: {e}"
 
 
 '''Convert the date to datetime object'''
 def to_date_time(df):
     for cols in df.select_dtypes(include="object").columns:
         try: 
+            warnings.simplefilter(action="ignore",category=UserWarning)
             df[cols] = pd.to_datetime(df[cols])
 
         except:
@@ -42,7 +43,7 @@ def clean_text(df):
 
 
             except Exception as e:
-                print(f"Error in cleaning the text columns due to: {e}")
+                return f"Error in cleaning the text columns due to: {e}"
 
         return df
 
@@ -71,16 +72,16 @@ def user_requirements(df,user_choice):
                     product_category = input("Enter the product category: ").title()
                     return filter_by_product_category(df,product_category)
                 else:
-                    print("Wrong command")
+                    return "Wrong command"
 
             except Exception as e:
-                print(f"Error in gathering the filters due to {e}")
+                return f"Error in gathering the filters due to {e}"
 
         elif user_choice == "U":
             return df
 
     except Exception as e:
-        print(f"Error in gathering user requirements due to {e}")
+        return f"Error in gathering user requirements due to {e}"
 
 
 
@@ -99,7 +100,7 @@ def fuzzy_matcher(df,targets,threshold):
 
         
     except Exception as e:
-        print(f"Error in fuzzymatching due to {e}")
+        return f"Error in fuzzymatching due to {e}"
 
     return matched if len(matched) == len(targets) else None
 
@@ -118,12 +119,13 @@ def top_customers(df):
 
             most_profitable_customer = df.groupby([match["Customer_ID"],match["Customer_Name"]])[match["Profits"]].sum().reset_index().sort_values(by=match["Profits"],ascending=False)
             
+            print(top_purchased_items_individually)
 
             return highest_ordering_customer,top_purchased_items_individually,most_profitable_customer
 
 
         except Exception as e:
-            print(f"Error in analyzing top customers due to : {e}")
+            return f"Error in analyzing top customers due to : {e}"
 
 
 
@@ -133,15 +135,25 @@ def behavioural_analysis(df):
     targets = ["Date","Order_Quantity","Customer_ID"]
     match = fuzzy_matcher(df,targets,THRESHOLD)
     if match:
+        try: 
+            df["month"] = df[match["Date"]].dt.to_period("M")    #Adding a month col in df to make filtering by month easier
 
-        df["month"] = df[match["Date"]].dt.to_period("M")
-        no_of_monthly_orders =  df.groupby("month")[match["Order_Quantity"]].sum()
+            no_of_monthly_orders =  df.groupby("month")[match["Order_Quantity"]].sum()
 
-        frequency_of_monthly_orders = df.groupby("month")[match["Order_Quantity"]].size()
+            frequency_of_monthly_orders = df.groupby("month")[match["Order_Quantity"]].size()
 
-        customers_monthly_order_frequency = df.groupby(["month",match["Customer_ID"]])[match["Order_Quantity"]].size()
+            customers_monthly_order_frequency = df.groupby(["month",match["Customer_ID"]])[match["Order_Quantity"]].size()
 
-        customers_total_orders_monthlty = df.groupby(["month",match["Customer_ID"]])[match["Order_Quantity"]].sum().sort_values(ascending=False)
+            customers_total_orders_monthlty = df.groupby(["month",match["Customer_ID"]])[match["Order_Quantity"]].sum().sort_values(ascending=False)
+            
+            customer_counts = df.groupby(match["Customer_ID"]).size()
+
+            repeat_customers = customer_counts[customer_counts>1].reset_index(name = "No of visits")
+            print("The repeaded values are: ")
+            print(repeat_customers)
+
+        except Exception as e:
+            return f"Error in analyzing behaviour due to {e}"
 
 
 
@@ -154,7 +166,7 @@ def filter_by_date(df,start,end):
             filtered_df = df[  (df[match["Date"]] >= start) & ( df[match["Date"]] <= end   ) ]
             return filtered_df
         except Exception as e:
-            print(f"Error in filtering the df by date due to {e}")
+            return f"Error in filtering the df by date due to {e}"
 
 
 
@@ -170,7 +182,7 @@ def filter_by_country(df,country_name):
             return filtered_df
             
         except Exception as e:
-            print(f"Error in filterig df by country due to {e}")
+            return f"Error in filterig df by country due to {e}"
 
 
 
@@ -183,7 +195,7 @@ def filter_by_product_category(df,product_category):
             return filtered_df
         
         except Exception as e:
-            print(f"Error in filtering the data by product category due to {e}")
+            return f"Error in filtering the data by product category due to {e}"
 
 
 
@@ -212,7 +224,9 @@ def main():
 
 
     top_customers(df)
+
     behavioural_analysis(df)
+
 
     
 
