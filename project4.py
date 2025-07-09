@@ -50,38 +50,45 @@ def clean_text(df):
 
 
 '''Proceed based on the requirement of the user'''
-def user_requirements(df,user_choice):
-    print("==Do you want to filter the data or see insights for all the datas?==")
-    # user_choice = input("==Enter (F) for filtered, (U) for unfiltered==").upper()
-    try:
+def user_requirements(df):
+    while(True):
+        user_choice = input("==Do you want Filtered(F) or Unfiltered(U) data==: ").upper()
+
+        try:
+            if user_choice == "F":
+
+                try:
+                    print("=====Preceiding with the filtered datas====\n")
+                    apply_filter = input("Enter what you want to apply filter on: \n Dates (D), Country (C), Product_Category(P): ").upper()
+                    if apply_filter == "D":
+                        start_date = pd.to_datetime(input("Enter the starting date: "))
+                        end_date = pd.to_datetime(input("Enter  the end date: "))
+                        return filter_by_date(df,start_date,end_date)
+                        
+
+                    elif apply_filter == "C":
+                        country_name = input("Enter the country name: ").title()
+                        return filter_by_country(df,country_name)
+
+                    elif apply_filter == "P":
+                        product_category = input("Enter the product category: ").title()
+                        return filter_by_product_category(df,product_category)
+                    else: 
+                        print("Wrong command")
+
+                except Exception as e:
+                    return f"Error in gathering the filters due to {e}"
+
+            elif user_choice == "U":
+                return df
             
-        if user_choice == "F":
-            try:
-                print("=====Preceiding with the filtered datas====")
-                apply_filter = input("Enter what you want to apply filter on: \n Dates (D), Country (C), Product_Category(P)").upper()
-                if apply_filter == "D":
-                    start_date = pd.to_datetime(input("Enter the starting date: "))
-                    end_date = pd.to_datetime(input("Enter  the end date: "))
-                    return filter_by_date(df,start_date,end_date)
+            else:
+                print("Wrong command, press either (F) or (U)")
+                
 
-                elif apply_filter == "C":
-                    country_name = input("Enter the country name: ").title()
-                    return filter_by_country(df,country_name)
 
-                elif apply_filter == "P":
-                    product_category = input("Enter the product category: ").title()
-                    return filter_by_product_category(df,product_category)
-                else:
-                    return "Wrong command"
-
-            except Exception as e:
-                return f"Error in gathering the filters due to {e}"
-
-        elif user_choice == "U":
-            return df
-
-    except Exception as e:
-        return f"Error in gathering user requirements due to {e}"
+        except Exception as e:
+            return f"Error in gathering user requirements due to {e}"
 
 
 
@@ -118,9 +125,7 @@ def top_customers(df):
             top_purchased_items_individually = df.groupby([match["Customer_ID"],match["Customer_Name"],match["Product"]]) [match["Order_Quantity"]].sum().reset_index().sort_values(by = match["Order_Quantity"],ascending=False)
 
             most_profitable_customer = df.groupby([match["Customer_ID"],match["Customer_Name"]])[match["Profits"]].sum().reset_index().sort_values(by=match["Profits"],ascending=False)
-            
-            print(top_purchased_items_individually)
-
+    
             return highest_ordering_customer,top_purchased_items_individually,most_profitable_customer
 
 
@@ -147,10 +152,9 @@ def behavioural_analysis(df):
             customers_total_orders_monthlty = df.groupby(["month",match["Customer_ID"]])[match["Order_Quantity"]].sum().sort_values(ascending=False)
             
             customer_counts = df.groupby(match["Customer_ID"]).size()
+            repeated_customers = customer_counts[customer_counts>1].reset_index(name = "No of visits")
 
-            repeat_customers = customer_counts[customer_counts>1].reset_index(name = "No of visits")
-            print("The repeaded values are: ")
-            print(repeat_customers)
+            return no_of_monthly_orders,frequency_of_monthly_orders,customers_monthly_order_frequency,customers_total_orders_monthlty,repeated_customers
 
         except Exception as e:
             return f"Error in analyzing behaviour due to {e}"
@@ -176,9 +180,6 @@ def filter_by_country(df,country_name):
     if match:
         try:
             filtered_df = df[ df[match["Country"]] == country_name]
-            print("The filtered df by country is ")
-            print(filtered_df)
-
             return filtered_df
             
         except Exception as e:
@@ -210,22 +211,36 @@ def main():
     to_date_time(df)
     clean_text(df)
 
-    user_choice = input("Do you want Filtered(F) or Unfiltered(U) data ").upper()
-    if user_choice == "F":
-        try:
-            df = user_requirements(df,user_choice)
+
+    try:
+        df = user_requirements(df)
         
-        except Exception as e:
-            print(f"Error {e}")
-
-    elif user_choice == "U":
-         df = user_requirements(df,user_choice)
+    except Exception as e:
+        print(f"Error {e}")
 
 
+    highest_ordering_customer,top_purchased_items_individually,most_profitable_customer = top_customers(df)
+    print("\nThe highest ordering customers are: ")
+    print(highest_ordering_customer)
+    print("\nThe most purchased items by individual: ")
+    print(top_purchased_items_individually)
+    print("\nThe most profitable customers are: ")
+    print(most_profitable_customer)
 
-    top_customers(df)
 
-    behavioural_analysis(df)
+    no_of_monthly_orders,frequency_of_monthly_orders,customers_monthly_order_frequency,customers_total_orders_monthlty,repeated_customers = behavioural_analysis(df)
+    
+    print("\nThe no of monthly orders are: ")
+    print(no_of_monthly_orders)
+    print("\nThe frequency of monthly orders are: ")
+    print(frequency_of_monthly_orders)
+    print("\nThe monthly order frequency of each customers is: ")
+    print(customers_monthly_order_frequency)
+    print("\nThe monthly total orders of individual customers are: ")
+    print(customers_total_orders_monthlty)
+    print("\nThe customer who visited us again for purchasing are: ")
+    print(repeated_customers)
+
 
 
     
