@@ -79,14 +79,50 @@ def show_basic_info(df,year):
            )
 
 
-def apply_filters():
-    pass
+def filter_by_language(df,user_input,language):
+    try:
+        filtered_df = df[ df[language] == user_input]
+        print("the filtred df by language is: ")
+        print(filtered_df)
+
+    except Exception as e:
+        return f"Error in filtering by language due to {e}"
+
+
+def filter_by_genre(df,user_input,genre):
+    try:
+        filtered_df = df[df[genre] == user_input]
+        print("The filtered df with required genre is: ")
+        print(filtered_df)
+
+    except Exception as e:
+        return f"Error in filtering by genre due to {e}"
+
+
+
+
+def filter_by_country(df,user_input,country):
+    try:
+        filtered_df = df[df[country] == user_input]
+        print("The filtered df by country is:")
+        print(filtered_df)
+
+    except Exception as e:
+        return f"Error in filtering by country due to {e}"
+
+def filter_by_release_date(df,start,end,release_date):
+    try:
+        filtered_df = df[(df[release_date] >= start) & (df[release_date] <= end)]
+        return filtered_df
+    
+    except Exception as e:
+        return f"Error in filtering by release date due to {e}"
+
 
 
 def top_list(df,rating,movie_name):
-    top_rated_movies = df.groupby(movie_name)[rating].sort_values(ascending=False).head()
-    print("The top rated movies are: ")
-    print(top_rated_movies)
+    top_rated_movies = df.sort_values(rating,ascending=False)[[movie_name,rating]].head(10).to_string(index=False)
+
 
 
 
@@ -102,7 +138,9 @@ def main():
 
     show_basic_info(df,ready_to_use_columns["Year"])
     top_list(df,ready_to_use_columns["Rating"],ready_to_use_columns["Title"])
-
+    filter_by_genre(df,"Action",ready_to_use_columns["Genre"])
+    filter_by_country(df,"India",ready_to_use_columns["Country"])
+    filter_by_language(df,"English",ready_to_use_columns["Language"])
 
 if __name__ == "__main__":
     main()
