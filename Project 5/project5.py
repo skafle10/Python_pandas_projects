@@ -122,8 +122,28 @@ def filter_by_release_date(df,start,end,release_date):
 
 def top_list(df,rating,movie_name):
     top_rated_movies = df.sort_values(rating,ascending=False)[[movie_name,rating]].head(10).to_string(index=False)
+    
 
 
+
+
+def genre_wise_analysis(df,genre,rating,release_date):
+    
+
+    average_ratings_genre = df.groupby(genre)[rating].mean().reset_index().sort_values(by = rating, ascending=False)
+    print("The average ratings per genre is: ")
+    print(average_ratings_genre)
+    most_frequent_genres = df.groupby(genre)[release_date].size().reset_index().sort_values(by = release_date,ascending=False)
+    print("The most frequent genre is: ")
+    print(most_frequent_genres)
+
+
+
+
+
+
+def year_wise_analysis(df):
+    pass
 
 
 def main():
@@ -141,6 +161,7 @@ def main():
     filter_by_genre(df,"Action",ready_to_use_columns["Genre"])
     filter_by_country(df,"India",ready_to_use_columns["Country"])
     filter_by_language(df,"English",ready_to_use_columns["Language"])
+    genre_wise_analysis(df,ready_to_use_columns["Genre"],ready_to_use_columns["Rating"],ready_to_use_columns["Year"])
 
 if __name__ == "__main__":
     main()
