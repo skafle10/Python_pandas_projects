@@ -4,6 +4,7 @@
 import os
 import pandas as pd
 from rapidfuzz import process
+import matplotlib as plt
 
 BASE_DIR = os.path.dirname(__file__)
 FILE_NAME = "movie_ratings_dataset.csv"
@@ -126,24 +127,36 @@ def top_list(df,rating,movie_name):
 
 
 
-
 def genre_wise_analysis(df,genre,rating,release_date):
-    
+    try:
+        average_ratings_genre = df.groupby(genre)[rating].mean().sort_values(ascending=False)
+        print("The average ratings per genre is: ")
+        print(average_ratings_genre)
+        most_frequent_genres = df.groupby(genre)[release_date].size().sort_values(ascending=False)
+        print("The most frequent genre is: ")
+        print(most_frequent_genres)
 
-    average_ratings_genre = df.groupby(genre)[rating].mean().reset_index().sort_values(by = rating, ascending=False)
-    print("The average ratings per genre is: ")
-    print(average_ratings_genre)
-    most_frequent_genres = df.groupby(genre)[release_date].size().reset_index().sort_values(by = release_date,ascending=False)
-    print("The most frequent genre is: ")
-    print(most_frequent_genres)
-
-
-
-
+    except Exception as e:
+        return f"Error in genre wise analysis due to {e}"
 
 
-def year_wise_analysis(df):
-    pass
+
+
+def year_wise_analysis(df,release_date,rating,plt):
+    try:
+        average_rating_per_year = df.groupby(release_date)[rating].mean().sort_values(ascending=False)
+        average_rating_per_year.plot()
+        print("The average ratings on eachy year is: ")
+        # print(average_rating_per_year)
+        plt.show()
+        print("The graph is shown")
+        
+
+    except Exception as e:
+        return f"Error in year wise analysis due to {e}"
+
+
+
 
 
 def main():
@@ -156,12 +169,14 @@ def main():
 
     # clean_dates(df,ready_to_use_columns["Year"])
 
-    show_basic_info(df,ready_to_use_columns["Year"])
-    top_list(df,ready_to_use_columns["Rating"],ready_to_use_columns["Title"])
-    filter_by_genre(df,"Action",ready_to_use_columns["Genre"])
-    filter_by_country(df,"India",ready_to_use_columns["Country"])
-    filter_by_language(df,"English",ready_to_use_columns["Language"])
-    genre_wise_analysis(df,ready_to_use_columns["Genre"],ready_to_use_columns["Rating"],ready_to_use_columns["Year"])
+    # show_basic_info(df,ready_to_use_columns["Year"])
+    # top_list(df,ready_to_use_columns["Rating"],ready_to_use_columns["Title"])
+    # filter_by_genre(df,"Action",ready_to_use_columns["Genre"])
+    # filter_by_country(df,"India",ready_to_use_columns["Country"])
+    # filter_by_language(df,"English",ready_to_use_columns["Language"])
+    # genre_wise_analysis(df,ready_to_use_columns["Genre"],ready_to_use_columns["Rating"],ready_to_use_columns["Year"])
+    
+    year_wise_analysis(df,ready_to_use_columns["Year"],ready_to_use_columns["Rating"],plt)
 
 if __name__ == "__main__":
     main()
