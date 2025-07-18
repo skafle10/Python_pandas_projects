@@ -4,7 +4,7 @@
 import os
 import pandas as pd
 from rapidfuzz import process
-import matplotlib as plt
+import matplotlib.pyplot as plt
 
 BASE_DIR = os.path.dirname(__file__)
 FILE_NAME = "movie_ratings_dataset.csv"
@@ -142,15 +142,21 @@ def genre_wise_analysis(df,genre,rating,release_date):
 
 
 
-def year_wise_analysis(df,release_date,rating,plt):
+def year_wise_analysis(df,plt,release_date,rating,movie):
     try:
         average_rating_per_year = df.groupby(release_date)[rating].mean().sort_values(ascending=False)
-        average_rating_per_year.plot()
-        print("The average ratings on eachy year is: ")
-        # print(average_rating_per_year)
+        average_rating_per_year.plot(kind = "bar")
+        print("The average ratings on each year is: ")
+        plt.title("Average Ratings Per Year")
+        plt.xlabel("Year")
+        plt.ylabel("Rating")
         plt.show()
-        print("The graph is shown")
-        
+
+        total_movies_released_each_year = df.groupby(release_date)[movie].size().sort_values(ascending=False)
+        total_movies_released_each_year.plot(title="Movies Released Each Year",kind="bar")
+        print("The no of movies released each year is: ")
+
+        plt.show()
 
     except Exception as e:
         return f"Error in year wise analysis due to {e}"
@@ -176,7 +182,7 @@ def main():
     # filter_by_language(df,"English",ready_to_use_columns["Language"])
     # genre_wise_analysis(df,ready_to_use_columns["Genre"],ready_to_use_columns["Rating"],ready_to_use_columns["Year"])
     
-    year_wise_analysis(df,ready_to_use_columns["Year"],ready_to_use_columns["Rating"],plt)
+    year_wise_analysis(df,plt,ready_to_use_columns["Year"],ready_to_use_columns["Rating"],ready_to_use_columns["Title"])
 
 if __name__ == "__main__":
     main()
