@@ -169,20 +169,45 @@ def main():
     df = load_data(FILE_PATH)
     clean_string_columns(df)
     ready_to_use_columns = fuzzy_matcher(df,TARGETS,THRESHOLD)
+    clean_dates(df,ready_to_use_columns["Year"])
 
-    # print("The matched data which are ready to be used are: ")
-    # print(ready_to_use_columns)
+    user_choice = input("Enter what you wanna do?"
+                        "Apply filter(F), see the whole dataset(U)?" 
+                        "or see the analysis(A): ").upper()
 
-    # clean_dates(df,ready_to_use_columns["Year"])
 
-    # show_basic_info(df,ready_to_use_columns["Year"])
-    # top_list(df,ready_to_use_columns["Rating"],ready_to_use_columns["Title"])
-    # filter_by_genre(df,"Action",ready_to_use_columns["Genre"])
-    # filter_by_country(df,"India",ready_to_use_columns["Country"])
-    # filter_by_language(df,"English",ready_to_use_columns["Language"])
-    # genre_wise_analysis(df,ready_to_use_columns["Genre"],ready_to_use_columns["Rating"],ready_to_use_columns["Year"])
+    if user_choice == "U":
+        pass
+    elif(user_choice == "F"):
+        apply_filter = input("how do you want to Filter the dataset?" 
+        "Release_year(Y),Movie_Genre(G),Language(L),Country(C)").upper()
+
+
+        if (apply_filter == "Y"):
+            pass
+        elif (apply_filter == "G"):
+            print("The filtered dataset by the provided Genre is: ")
+            filter_by_genre(df,"Action",ready_to_use_columns["Genre"])
+        elif (apply_filter == "L"):
+            print("The filtered datset by provided language is: ")
+            filter_by_language(df,"English",ready_to_use_columns["Language"])
+        elif (apply_filter == "c"):
+            print("The filtered dataset by provided country is :")
+            filter_by_country(df,"India",ready_to_use_columns["Country"])
+
+    elif (user_choice == "A"):
+        analysis_filter = input("Enter how do you want to see the analysis?" 
+        "analysis by Release_Year(Y) or analysis by Movie_Genre(G): ").upper()
+        if (analysis_filter == "Y"):
+            print("The year wise analyis is: ")
+            year_wise_analysis(df,plt,ready_to_use_columns["Year"],ready_to_use_columns["Rating"],ready_to_use_columns["Title"])
     
-    year_wise_analysis(df,plt,ready_to_use_columns["Year"],ready_to_use_columns["Rating"],ready_to_use_columns["Title"])
+        elif (analysis_filter == "G"):
+            print("The genre wise analysis is: ")
+            genre_wise_analysis(df,ready_to_use_columns["Genre"],ready_to_use_columns["Rating"],ready_to_use_columns["Year"])
+
+    
+
 
 if __name__ == "__main__":
     main()
