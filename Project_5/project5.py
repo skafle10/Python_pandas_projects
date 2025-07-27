@@ -1,10 +1,12 @@
 
 
-'''Movie  Rating Analyzer'''
+# '''Movie  Rating Analyzer'''
 import os
 import pandas as pd
 from rapidfuzz import process
 import matplotlib.pyplot as plt
+import streamlit as st
+
 
 BASE_DIR = os.path.dirname(__file__)
 FILE_NAME = "movie_ratings_dataset.csv"
@@ -14,7 +16,7 @@ TARGETS = ["Title","Genre","Year","Rating","Votes","Runtime","Country","Language
 
 
 
-'''Loads the file and makes it a dataframe'''
+# '''Loads the file and makes it a dataframe'''
 def load_data(file_path):
     try:
         df = pd.read_csv(file_path)
@@ -23,7 +25,7 @@ def load_data(file_path):
     except Exception as e:
         return f"Error in loading the data due to {e}"
     
-'''A fuzzymatcher to make sure that slightly changed column names also matches'''
+# '''A fuzzymatcher to make sure that slightly changed column names also matches'''
 def fuzzy_matcher(df,targets,threshold):
     matched = {}
     unmatched = []
@@ -48,7 +50,7 @@ def fuzzy_matcher(df,targets,threshold):
     return matched
 
 
-'''cleans the strings columns from the dataset'''
+# '''cleans the strings columns from the dataset'''
 def clean_string_columns(df):
     for string_col in df.select_dtypes(include="object").columns:
         try:
@@ -60,7 +62,7 @@ def clean_string_columns(df):
         
 
 
-'''cleans the date column from the dataset'''
+# '''cleans the date column from the dataset'''
 def clean_dates(df,date):
     try:
         df[date] = df[date].str.strip().astype(int)      # Convert the year into uniform values, no need to make it a datatime obj in this case
@@ -71,7 +73,7 @@ def clean_dates(df,date):
         return f"Error in cleaning the date due to {e}"
     
 
-'''shows the basic info as a intro to the user about the dataset'''
+# '''shows the basic info as a intro to the user about the dataset'''
 def show_basic_info(df,year):
     total_no_of_movies = len(df)
     columns_names = list(df.columns)
@@ -81,7 +83,7 @@ def show_basic_info(df,year):
 
            )
 
-'''Filters movies based on the language'''
+# '''Filters movies based on the language'''
 def filter_by_language(df,user_input,language):
     try:
         filtered_df = df[ df[language] == user_input]
@@ -91,7 +93,7 @@ def filter_by_language(df,user_input,language):
     except Exception as e:
         return f"Error in filtering by language due to {e}"
 
-'''Filters the movies based on the movie genre'''
+# '''Filters the movies based on the movie genre'''
 def filter_by_genre(df,user_input,genre):
     try:
         filtered_df = df[df[genre] == user_input]
@@ -102,7 +104,7 @@ def filter_by_genre(df,user_input,genre):
 
 
 
-'''Filters the movie based on the given country'''
+# '''Filters the movie based on the given country'''
 def filter_by_country(df,user_input,country):
     try:
         filtered_df = df[df[country] == user_input]
@@ -113,7 +115,7 @@ def filter_by_country(df,user_input,country):
         return f"Error in filtering by country due to {e}"
     
 
-'''Filters the movies based on the given release date'''
+# '''Filters the movies based on the given release date'''
 def filter_by_release_date(df,start,end,release_date):
     try:
         filtered_df = df[(df[release_date] >= start) & (df[release_date] <= end)]
@@ -126,7 +128,7 @@ def filter_by_release_date(df,start,end,release_date):
     
 
 
-'''Shows insights based on the movie genre'''
+# '''Shows insights based on the movie genre'''
 def genre_wise_analysis(df,genre,rating,release_date):
     try:
         average_ratings_per_genre = df.groupby(genre)[rating].mean().sort_values(ascending=False)
@@ -138,7 +140,7 @@ def genre_wise_analysis(df,genre,rating,release_date):
 
 
 
-'''Shows insights based on the release year'''
+# '''Shows insights based on the release year'''
 def year_wise_analysis(df,plt,release_date,rating,movie):
     try:
         average_rating_per_year = df.groupby(release_date)[rating].mean().sort_values(ascending=False)
@@ -160,6 +162,7 @@ def year_wise_analysis(df,plt,release_date,rating,movie):
 
 
 def main():
+    
     df = load_data(FILE_PATH)
     clean_string_columns(df)
     ready_to_use_columns = fuzzy_matcher(df,TARGETS,THRESHOLD)
@@ -171,7 +174,7 @@ def main():
 
 
     if user_choice == "U":
-        print("The whole dataset is: ")
+        st.write("The whole dataset is: ")
         print(df)
 
     elif(user_choice == "F"):
@@ -185,42 +188,43 @@ def main():
         elif (apply_filter == "G"):
             genre_choice = input("Enter the genre for the movie: ").title()
             filtered_df_by_genre = filter_by_genre(df,genre_choice,ready_to_use_columns["Genre"])
-            print("The df with the entered genre is: ")
-            print(filtered_df_by_genre)
+            st.write("The df with the entered genre is: ")
+            st.write(filtered_df_by_genre)
 
         elif (apply_filter == "L"):
             language_choice = input("Enter the language for the movie: ").title()
             filtered_df_by_language = filter_by_language(df,language_choice,ready_to_use_columns["Language"])
-            print("The filtered datset by provided language is: ")
-            print(filtered_df_by_language)
-
+            st.write("The filtered datset by provided language is: ")
+            st.write(filtered_df_by_language)
+            st.write(filtered_df_by_language)
 
         elif (apply_filter == "C"):
             country_choice = input("Enter the country name: ").title()
             filtered_df_by_country = filter_by_country(df,country_choice,ready_to_use_columns["Country"])
-            print("The filtered dataset by provided country is: ")
-            print(filtered_df_by_country)
+            st.write("The filtered dataset by provided country is: ")
+            st.write(filtered_df_by_country)
+            st.write(filtered_df_by_country)
 
 
     elif (user_choice == "A"):
         analysis_filter = input("Enter how do you want to see the analysis?" 
         "analysis by Release_Year(Y) or analysis by Movie_Genre(G): ").upper()
         if (analysis_filter == "Y"):
-            print("The year wise analyis is: ")
+            st.subheader("The year wise analyis is: ")
 
             average_ratings_per_year, total_movies_released_per_year =  year_wise_analysis(df,plt,ready_to_use_columns["Year"],ready_to_use_columns["Rating"],ready_to_use_columns["Title"])
-            print("The average ratings per year of the movies is: ")
-            print(average_ratings_per_year)
-            print("The no of movies released per year is:")
-            print(total_movies_released_per_year)
+            st.write("The average ratings per year of the movies is: ")
+            st.write(average_ratings_per_year)
+            st.write("The no of movies released per year is:")
+            st.write(total_movies_released_per_year)
     
         elif (analysis_filter == "G"):
-            print("The genre wise analysis is: ")
+            st.subheader("The genre wise analysis is: ")
             average_rating_per_genre,frequently_released_genre = genre_wise_analysis(df,ready_to_use_columns["Genre"],ready_to_use_columns["Rating"],ready_to_use_columns["Year"])
-            print("The average ratings per genre is: ")
-            print(average_rating_per_genre)
-            print("The frequently released genre is: ")
-            print(frequently_released_genre)
+            st.write("The average ratings per genre is: ")
+            st.write(average_rating_per_genre)
+            st.write("The frequently released genre is: ")
+            st.write(frequently_released_genre)
     
 
 
