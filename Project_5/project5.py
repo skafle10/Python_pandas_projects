@@ -168,64 +168,73 @@ def main():
     ready_to_use_columns = fuzzy_matcher(df,TARGETS,THRESHOLD)
     clean_dates(df,ready_to_use_columns["Year"])
 
-    user_choice = input("Enter what you wanna do?"
+    st.header("MOVIE RATING ANALYZER")
+    user_choice = st.subheader("Enter what you wanna do?"
                         "Apply filter(F), see the whole dataset(U)?" 
-                        "or see the analysis(A): ").upper()
+                        "or see the analysis(A): ")
 
 
-    if user_choice == "U":
-        st.write("The whole dataset is: ")
-        print(df)
+    col1, col2, col3 = st.columns(3)
 
-    elif(user_choice == "F"):
-        apply_filter = input("how do you want to Filter the dataset?" 
-        "Release_year(Y),Movie_Genre(G),Language(L),Country(C): ").upper()
+    with col1: 
+        if st.button("Whole Dataset"):
+   
 
-
-        if (apply_filter == "Y"):
-            pass
-
-        elif (apply_filter == "G"):
-            genre_choice = input("Enter the genre for the movie: ").title()
-            filtered_df_by_genre = filter_by_genre(df,genre_choice,ready_to_use_columns["Genre"])
-            st.write("The df with the entered genre is: ")
-            st.write(filtered_df_by_genre)
-
-        elif (apply_filter == "L"):
-            language_choice = input("Enter the language for the movie: ").title()
-            filtered_df_by_language = filter_by_language(df,language_choice,ready_to_use_columns["Language"])
-            st.write("The filtered datset by provided language is: ")
-            st.write(filtered_df_by_language)
-            st.write(filtered_df_by_language)
-
-        elif (apply_filter == "C"):
-            country_choice = input("Enter the country name: ").title()
-            filtered_df_by_country = filter_by_country(df,country_choice,ready_to_use_columns["Country"])
-            st.write("The filtered dataset by provided country is: ")
-            st.write(filtered_df_by_country)
-            st.write(filtered_df_by_country)
+            st.write("The whole dataset is: ")
+            st.write(df)
 
 
-    elif (user_choice == "A"):
-        analysis_filter = input("Enter how do you want to see the analysis?" 
-        "analysis by Release_Year(Y) or analysis by Movie_Genre(G): ").upper()
-        if (analysis_filter == "Y"):
-            st.subheader("The year wise analyis is: ")
+    with col2:
+        if st.button("Apply Filter"):
+            apply_filter = st.subheader("how do you want to Filter the dataset? \n Release_year(Y),Movie_Genre(G),Language(L),Country(C): ")
 
-            average_ratings_per_year, total_movies_released_per_year =  year_wise_analysis(df,plt,ready_to_use_columns["Year"],ready_to_use_columns["Rating"],ready_to_use_columns["Title"])
-            st.write("The average ratings per year of the movies is: ")
-            st.write(average_ratings_per_year)
-            st.write("The no of movies released per year is:")
-            st.write(total_movies_released_per_year)
-    
-        elif (analysis_filter == "G"):
-            st.subheader("The genre wise analysis is: ")
-            average_rating_per_genre,frequently_released_genre = genre_wise_analysis(df,ready_to_use_columns["Genre"],ready_to_use_columns["Rating"],ready_to_use_columns["Year"])
-            st.write("The average ratings per genre is: ")
-            st.write(average_rating_per_genre)
-            st.write("The frequently released genre is: ")
-            st.write(frequently_released_genre)
-    
+
+            col4,col5,col6,col7 = st.columns(4)
+            with col4: 
+                if st.button("Genre"):
+
+                    genre_choice = st.text_input("Enter the genre for the movie: ")
+                    filtered_df_by_genre = filter_by_genre(df,genre_choice.title(),ready_to_use_columns["Genre"])
+                    st.write("The df with the entered genre is: ")
+                    st.write(filtered_df_by_genre)
+
+            with col5:
+                language_choice = input("Enter the language for the movie: ")
+                filtered_df_by_language = filter_by_language(df,language_choice,ready_to_use_columns["Language"])
+                st.write("The filtered datset by provided language is: ")
+                st.write(filtered_df_by_language)
+                st.write(filtered_df_by_language)
+
+            with col6:
+                country_choice = input("Enter the country name: ")
+                filtered_df_by_country = filter_by_country(df,country_choice,ready_to_use_columns["Country"])
+                st.write("The filtered dataset by provided country is: ")
+                st.write(filtered_df_by_country)
+                st.write(filtered_df_by_country)
+
+
+    with col3:
+        if st.button("Analysis"):
+            analysis_filter = input("Enter how do you want to see the analysis?" 
+            "analysis by Release_Year(Y) or analysis by Movie_Genre(G): ").upper()
+            
+            if (analysis_filter == "Y"):
+                st.subheader("The year wise analyis is: ")
+
+                average_ratings_per_year, total_movies_released_per_year =  year_wise_analysis(df,plt,ready_to_use_columns["Year"],ready_to_use_columns["Rating"],ready_to_use_columns["Title"])
+                st.write("The average ratings per year of the movies is: ")
+                st.write(average_ratings_per_year)
+                st.write("The no of movies released per year is:")
+                st.write(total_movies_released_per_year)
+        
+            elif (analysis_filter == "G"):
+                st.subheader("The genre wise analysis is: ")
+                average_rating_per_genre,frequently_released_genre = genre_wise_analysis(df,ready_to_use_columns["Genre"],ready_to_use_columns["Rating"],ready_to_use_columns["Year"])
+                st.write("The average ratings per genre is: ")
+                st.write(average_rating_per_genre)
+                st.write("The frequently released genre is: ")
+                st.write(frequently_released_genre)
+        
 
 
 if __name__ == "__main__":
