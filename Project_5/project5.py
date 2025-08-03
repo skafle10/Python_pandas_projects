@@ -193,48 +193,72 @@ def apply_filter(df,ready_to_use_columns):
 
     if (st.session_state.current_view == "genre"):
 
-            genre_choice = st.text_input("Enter the genre for the movie: ").strip().title()
+        genre_choice = st.text_input("Enter the genre for the movie: ").strip().title()
+        if genre_choice:    #This is needed because as soon as the block runs stlit sees that genre choice is empty and else block gets runs as well.
             if genre_choice in df[ready_to_use_columns["Genre"]].values:
                 filtered_df_by_genre = filter_by_genre(df,genre_choice.title(),ready_to_use_columns["Genre"])
                 st.write("The df with the entered genre is: ")
                 st.write(filtered_df_by_genre)
-
             else:
-                st.write("Ha ha genre_choice")
-                                
-                                
+                st.write("Genre not available, try one of the following: ")
+                                    
+
+
+     
     with col5:
         if st.button("Language"):
             st.session_state.current_view = "language"
 
 
     if (st.session_state.current_view == "language"):
-   
-            language_choice = st.text_input("Enter the language for the movie: ").strip().title()
+        language_choice = st.text_input("Enter the language for the movie: ").strip().title()
 
+        if language_choice:
             if language_choice in df[ready_to_use_columns["Language"]].values:
                 filtered_df_by_language = filter_by_language(df,language_choice.title(),ready_to_use_columns["Language"])
                 st.write("The filtered datset by provided language is: ")
                 st.write(filtered_df_by_language)
             else:
-                st.write("HA HA language")
-        
-                            
+                st.write("Language not available , try one of the following: ")
+            
+
+
+
+
+
+
+
+
     with col6:
         if st.button("Country"):
             st.session_state.current_view = "country"
 
     if (st.session_state.current_view == "country"):
         country_choice = st.text_input("Enter the country name: ").strip().title()
-        if country_choice in df[ready_to_use_columns["Country"]].values:
-            filtered_df_by_country = filter_by_country(df,country_choice.title(),ready_to_use_columns["Country"])
-            st.write("The filtered dataset by provided country is: ")
-            st.write(filtered_df_by_country)
 
-        else:
-            st.write("ha ha country")
+        if country_choice: 
+            st.write(f"Your country choice is: {country_choice}")
+
+            if country_choice in df[ready_to_use_columns["Country"]].unique():
+                filtered_df_by_country = filter_by_country(df,country_choice,ready_to_use_columns["Country"])
+                st.write("The filtered dataset by provided country is: ")
+                st.write(filtered_df_by_country)
+
+            else:
+                st.write("Country not available, try one of the following: ")
+                st.write(", ".join(df[ready_to_use_columns["Country"]].unique()))
                 
 
+
+
+
+
+
+
+
+
+
+    
 
 
 def main():
