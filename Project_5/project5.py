@@ -156,109 +156,107 @@ def year_wise_analysis(df,release_date,rating,movie):
 
 
 def apply_analysis(df,ready_to_use_columns):
-    if st.session_state.current_view == "analysis":
-        analysis_filter = st.text_input("Enter how do you want to see the analysis?" 
-            "analysis by Release_Year(Y) or analysis by Movie_Genre(G): ").strip().upper()
+
+    if (st.session_state.main_view == "analysis"):
+        
+        st.subheader("Enter how do you want to analyze the movies: ")
+        col1, col2 = st.columns(2)            
+        with col1:
+            if st.button("RELEASE_YEAR"):
+                st.session_state.branch_view = "year"
+
+            if (st.session_state.branch_view == "year"):
+                st.subheader("The year wise analyis is: ")
+                average_ratings_per_year, total_movies_released_per_year =  year_wise_analysis(df,ready_to_use_columns["Year"],ready_to_use_columns["Rating"],ready_to_use_columns["Title"])
+                st.write("The average ratings per year of the movies is: ")
+                st.write(average_ratings_per_year)
+                st.write("The no of movies released per year is:")
+                st.write(total_movies_released_per_year)
                     
 
-        if (analysis_filter == "Y"):
-            st.subheader("The year wise analyis is: ")
-            average_ratings_per_year, total_movies_released_per_year =  year_wise_analysis(df,ready_to_use_columns["Year"],ready_to_use_columns["Rating"],ready_to_use_columns["Title"])
-            st.write("The average ratings per year of the movies is: ")
-            st.write(average_ratings_per_year)
-            st.write("The no of movies released per year is:")
-            st.write(total_movies_released_per_year)
-            
 
-        elif (analysis_filter == "G"):
-    
-            st.subheader("The genre wise analysis is: ")
-            average_rating_per_genre,frequently_released_genre = genre_wise_analysis(df,ready_to_use_columns["Genre"],ready_to_use_columns["Rating"],ready_to_use_columns["Year"])
-            st.write("The average ratings per genre is: ")
-            st.write(average_rating_per_genre)
-            st.write("The frequently released genre is: ")
-            st.write(frequently_released_genre)
-                
+        with col2:
+            if st.button("GENRE"):
+                st.session_state.branch_view = "genre"
+
+            if (st.session_state.branch_view == "genre"):
+        
+                st.subheader("The genre wise analysis is: ")
+                average_rating_per_genre,frequently_released_genre = genre_wise_analysis(df,ready_to_use_columns["Genre"],ready_to_use_columns["Rating"],ready_to_use_columns["Year"])
+                st.write("The average ratings per genre is: ")
+                st.write(average_rating_per_genre)
+                st.write("The frequently released genre is: ")
+                st.write(frequently_released_genre)
+                    
 
 
 
 def apply_filter(df,ready_to_use_columns):
 
-    st.subheader("how do you want to Filter the dataset? \n Release_year(Y),Movie_Genre(G),Language(L),Country(C): ")
-    col4,col5,col6,col7 = st.columns(4)
-    with col4: 
-        if st.button("Genre"):
-            st.session_state.current_view = "genre"
+    if (st.session_state.main_view == "apply_filter"):
+        st.subheader("how do you want to Filter the dataset?: ")
+        col4,col5,col6 = st.columns(3)
+        with col4: 
+            if st.button("Genre"):
+                st.session_state.branch_view = "genre"
 
 
-    if (st.session_state.current_view == "genre"):
+        if (st.session_state.branch_view == "genre"):
 
-        genre_choice = st.text_input("Enter the genre for the movie: ").strip().title()
-        if genre_choice:    #This is needed because as soon as the block runs stlit sees that genre choice is empty and else block gets runs as well.
-            if genre_choice in df[ready_to_use_columns["Genre"]].values:
-                filtered_df_by_genre = filter_by_genre(df,genre_choice.title(),ready_to_use_columns["Genre"])
-                st.write("The df with the entered genre is: ")
-                st.write(filtered_df_by_genre)
-            else:
-                st.write("Genre not available, try one of the following: ")
-                                    
-
-
-     
-    with col5:
-        if st.button("Language"):
-            st.session_state.current_view = "language"
+            genre_choice = st.text_input("Enter the genre for the movie: ").strip().title()
+            if genre_choice:    #This is needed because as soon as the block runs stlit sees that genre choice is empty and else block gets runs as well.
+                if genre_choice in df[ready_to_use_columns["Genre"]].values:
+                    filtered_df_by_genre = filter_by_genre(df,genre_choice,ready_to_use_columns["Genre"])
+                    st.write("The df with the entered genre is: ")
+                    st.write(filtered_df_by_genre)
+                else:
+                    st.write("Genre not available, try one of the following: ")
+                    st.write((df[ready_to_use_columns["Genre"]].unique()))
+                                        
 
 
-    if (st.session_state.current_view == "language"):
-        language_choice = st.text_input("Enter the language for the movie: ").strip().title()
-
-        if language_choice:
-            if language_choice in df[ready_to_use_columns["Language"]].values:
-                filtered_df_by_language = filter_by_language(df,language_choice.title(),ready_to_use_columns["Language"])
-                st.write("The filtered datset by provided language is: ")
-                st.write(filtered_df_by_language)
-            else:
-                st.write("Language not available , try one of the following: ")
-            
+        
+        with col5:
+            if st.button("Language"):
+                st.session_state.branch_view = "language"
 
 
+        if (st.session_state.branch_view == "language"):
+            language_choice = st.text_input("Enter the language for the movie: ").strip().title()
 
-
-
-
-
-
-    with col6:
-        if st.button("Country"):
-            st.session_state.current_view = "country"
-
-    if (st.session_state.current_view == "country"):
-        country_choice = st.text_input("Enter the country name: ").strip().title()
-
-        if country_choice: 
-            st.write(f"Your country choice is: {country_choice}")
-
-            if country_choice in df[ready_to_use_columns["Country"]].unique():
-                filtered_df_by_country = filter_by_country(df,country_choice,ready_to_use_columns["Country"])
-                st.write("The filtered dataset by provided country is: ")
-                st.write(filtered_df_by_country)
-
-            else:
-                st.write("Country not available, try one of the following: ")
-                st.write(", ".join(df[ready_to_use_columns["Country"]].unique()))
+            if language_choice:
+                if language_choice in df[ready_to_use_columns["Language"]].unique():
+                    filtered_df_by_language = filter_by_language(df,language_choice,ready_to_use_columns["Language"])
+                    st.write("The filtered datset by provided language is: ")
+                    st.write(filtered_df_by_language)
+                else:
+                    st.write("Language not available , try one of the following: ")
+                    st.write(", ".join(df[ready_to_use_columns["Language"]].unique()))
                 
 
 
 
+        with col6:
+            if st.button("Country"):
+                st.session_state.branch_view = "country"
+
+        if (st.session_state.branch_view == "country"):
+            country_choice = st.text_input("Enter the country name:").strip().title()
+        
+            if country_choice:
+                # st.write(f"Your country choice is: {country_choice}")
+
+                if country_choice in df[ready_to_use_columns["Country"]].unique():
+                    filtered_df_by_country = filter_by_country(df,country_choice,ready_to_use_columns["Country"])
+                    st.write("The filtered dataset by provided country is: ")
+                    st.write(filtered_df_by_country)
+
+                else:
+                    st.write("Country not available, try one of the following: ")
+                    st.write(", ".join(df[ready_to_use_columns["Country"]].unique()))
 
 
 
-
-
-
-
-    
 
 
 def main():
@@ -275,8 +273,14 @@ def main():
 
 
  
-    if "current_view" not in st.session_state:
-        st.session_state.current_view = False
+    if "main_view" not in st.session_state:
+        st.session_state.main_view = False
+
+    
+    if "branch_view" not in st.session_state:
+        st.session_state.branch_view = False
+
+
 
 
     with st.empty().container():
@@ -284,32 +288,36 @@ def main():
         col1, col2, col3 = st.columns(3)
         with col1: 
             if st.button("Whole Dataset"):
-                st.session_state.current_view = "whole_ds"
+                st.session_state.main_view = "whole_ds"
             
-        if (st.session_state.current_view == "whole_ds"):
+        if (st.session_state.main_view == "whole_ds"):
                 st.write("The whole dataset is: ")
                 st.write(df)
             
 
-        with col3:
+        with col2:
             if st.button("Analysis"):
-                st.session_state.current_view = "analysis"
+                st.session_state.main_view = "analysis"
 
             
-        if (st.session_state.current_view == "analysis"):
+        if (st.session_state.main_view == "analysis"):
             apply_analysis(df,ready_to_use_columns)
 
 
 
-        with col2:
+        with col3:
             if st.button("Apply Filter"):
-                st.session_state.current_view = "apply_filter"
+                st.session_state.main_view = "apply_filter"
 
-        if (st.session_state.current_view == "apply_filter"):
+        if (st.session_state.main_view == "apply_filter"):
             apply_filter(df,ready_to_use_columns)
+
+
     
 
 
 
 if __name__ == "__main__":
+
     main()
+    
