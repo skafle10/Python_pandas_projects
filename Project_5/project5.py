@@ -8,9 +8,9 @@ import matplotlib.pyplot as plt
 import streamlit as st
 
 
-BASE_DIR = os.path.dirname(__file__)
-FILE_NAME = "movie_ratings_dataset.csv"
-FILE_PATH = os.path.join(BASE_DIR,FILE_NAME)
+# BASE_DIR = os.path.dirname(__file__)
+# FILE_NAME = "movie_ratings_dataset.csv"
+# FILE_PATH = os.path.join(BASE_DIR,FILE_NAME)
 THRESHOLD = 80
 TARGETS = ["Title","Genre","Year","Rating","Votes","Runtime","Country","Language","Review"]
 
@@ -260,19 +260,24 @@ def apply_filter(df,ready_to_use_columns):
 
 
 def main():
-    
-    df = load_data(FILE_PATH)
-    clean_string_columns(df)
-    ready_to_use_columns = fuzzy_matcher(df,TARGETS,THRESHOLD)
-    clean_dates(df,ready_to_use_columns["Year"])
+
+
 
     st.header("MOVIE RATING ANALYZER")
-    user_choice = st.subheader("Enter what you wanna do?"
-                        "Apply filter(F), see the whole dataset(U)?" 
-                        "or see the analysis(A): ")
+
+    uploaded_file = st.file_uploader("upload your csv file: ")
+    
+    if uploaded_file: 
+        df = load_data(uploaded_file)
+        clean_string_columns(df)
+        ready_to_use_columns = fuzzy_matcher(df,TARGETS,THRESHOLD)
+        clean_dates(df,ready_to_use_columns["Year"])
+        user_choice = st.subheader("SELECT ONE OF THE FOLLOWING ")
 
 
- 
+    if not uploaded_file:
+        st.warning("Please upload the file first!!")
+
     if "main_view" not in st.session_state:
         st.session_state.main_view = False
 
