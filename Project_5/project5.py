@@ -73,6 +73,8 @@ def clean_dates(df,date):
         return f"Error in cleaning the date due to {e}"
     
 
+
+
 # '''shows the basic info as a intro to the user about the dataset'''
 def show_basic_info(df,year):
     total_no_of_movies = len(df)
@@ -82,6 +84,9 @@ def show_basic_info(df,year):
            f"You will get the information about {columns_names}\n"
 
            )
+
+
+
 
 # '''Filters movies based on the language'''
 def filter_by_language(df,user_input,language):
@@ -154,6 +159,7 @@ def year_wise_analysis(df,release_date,rating,movie):
 
 
 
+#'''Display the data analysis using streamlit'''
 
 def apply_analysis(df,ready_to_use_columns):
 
@@ -191,6 +197,7 @@ def apply_analysis(df,ready_to_use_columns):
 
 
 
+#'''apply the filters to the data and show the filtered df using streamlit.'''
 def apply_filter(df,ready_to_use_columns):
 
     if (st.session_state.main_view == "apply_filter"):
@@ -261,49 +268,56 @@ def apply_filter(df,ready_to_use_columns):
 
 def main():
 
-
-
     st.header("MOVIE RATING ANALYZER")
 
+    if "file" not in st.session_state:
+        st.session_state.file = "not_uploaded"
+
+
     uploaded_file = st.file_uploader("upload your csv file: ")
-    
+
+
     if uploaded_file: 
+        st.session_state.file = "uploaded"
         df = load_data(uploaded_file)
         clean_string_columns(df)
         ready_to_use_columns = fuzzy_matcher(df,TARGETS,THRESHOLD)
         clean_dates(df,ready_to_use_columns["Year"])
-        user_choice = st.subheader("SELECT ONE OF THE FOLLOWING ")
 
 
-    if not uploaded_file:
-        st.warning("Please upload the file first!!")
-
+    user_choice = st.subheader("SELECT ONE OF THE FOLLOWING ")
+            
     if "main_view" not in st.session_state:
         st.session_state.main_view = False
-
     
     if "branch_view" not in st.session_state:
         st.session_state.branch_view = False
 
 
-
-
     with st.empty().container():
-
         col1, col2, col3 = st.columns(3)
+
         with col1: 
-            if st.button("Whole Dataset"):
-                st.session_state.main_view = "whole_ds"
-            
+            if st.button("Whole Dataset"): 
+                if st.session_state.file == "uploaded":
+                    st.session_state.main_view = "whole_ds"
+
+                else:
+                    st.warning("Please upload the file first!!")
+                
         if (st.session_state.main_view == "whole_ds"):
                 st.write("The whole dataset is: ")
                 st.write(df)
             
 
+
         with col2:
             if st.button("Analysis"):
-                st.session_state.main_view = "analysis"
+                if st.session_state.file == "uploaded":
+                    st.session_state.main_view = "analysis"
 
+                else:
+                    st.warning("Please upload the file first!!")
             
         if (st.session_state.main_view == "analysis"):
             apply_analysis(df,ready_to_use_columns)
@@ -312,15 +326,20 @@ def main():
 
         with col3:
             if st.button("Apply Filter"):
-                st.session_state.main_view = "apply_filter"
+                if st.session_state.file == "uploaded":
+                    st.session_state.main_view = "apply_filter"
 
+                else:
+                    st.warning("Please upload the file first!!")
+
+ 
         if (st.session_state.main_view == "apply_filter"):
             apply_filter(df,ready_to_use_columns)
 
 
-    
 
-
+        
+ 
 
 if __name__ == "__main__":
 
