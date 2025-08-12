@@ -164,20 +164,23 @@ def year_wise_analysis(df,release_date,rating,movie):
 def apply_analysis(df,ready_to_use_columns):
 
     if (st.session_state.main_view == "analysis"):
-        
+            
+        if "branch_view" not in st.session_state:
+            st.session_state.branch_view = False
+
         st.subheader("Enter how do you want to analyze the movies: ")
         col1, col2 = st.columns(2)            
         with col1:
             if st.button("RELEASE_YEAR"):
                 st.session_state.branch_view = "year"
 
-            if (st.session_state.branch_view == "year"):
-                st.subheader("The year wise analyis is: ")
-                average_ratings_per_year, total_movies_released_per_year =  year_wise_analysis(df,ready_to_use_columns["Year"],ready_to_use_columns["Rating"],ready_to_use_columns["Title"])
-                st.write("The average ratings per year of the movies is: ")
-                st.write(average_ratings_per_year)
-                st.write("The no of movies released per year is:")
-                st.write(total_movies_released_per_year)
+        if (st.session_state.branch_view == "year"):
+            st.subheader("The year wise analyis is: ")
+            average_ratings_per_year, total_movies_released_per_year =  year_wise_analysis(df,ready_to_use_columns["Year"],ready_to_use_columns["Rating"],ready_to_use_columns["Title"])
+            st.write("The average ratings per year of the movies is: ")
+            st.write(average_ratings_per_year)
+            st.write("The no of movies released per year is:")
+            st.write(total_movies_released_per_year)
                     
 
 
@@ -185,15 +188,15 @@ def apply_analysis(df,ready_to_use_columns):
             if st.button("GENRE"):
                 st.session_state.branch_view = "genre"
 
-            if (st.session_state.branch_view == "genre"):
+        if (st.session_state.branch_view == "genre"):
         
-                st.subheader("The genre wise analysis is: ")
-                average_rating_per_genre,frequently_released_genre = genre_wise_analysis(df,ready_to_use_columns["Genre"],ready_to_use_columns["Rating"],ready_to_use_columns["Year"])
-                st.write("The average ratings per genre is: ")
-                st.write(average_rating_per_genre)
-                st.write("The frequently released genre is: ")
-                st.write(frequently_released_genre)
-                    
+            st.subheader("The genre wise analysis is: ")
+            average_rating_per_genre,frequently_released_genre = genre_wise_analysis(df,ready_to_use_columns["Genre"],ready_to_use_columns["Rating"],ready_to_use_columns["Year"])
+            st.write("The average ratings per genre is: ")
+            st.write(average_rating_per_genre)
+            st.write("The frequently released genre is: ")
+            st.write(frequently_released_genre)
+                        
 
 
 
@@ -201,14 +204,18 @@ def apply_analysis(df,ready_to_use_columns):
 def apply_filter(df,ready_to_use_columns):
 
     if (st.session_state.main_view == "apply_filter"):
+
+        if "branch_view" not in st.session_state:
+            st.session_state.branch_view = False
+
         st.subheader("how do you want to Filter the dataset?: ")
         col4,col5,col6 = st.columns(3)
+        
         with col4: 
             if st.button("Genre"):
-                st.session_state.branch_view = "genre"
+                st.session_state.branch_view = "filter_genre"
 
-
-        if (st.session_state.branch_view == "genre"):
+        if (st.session_state.branch_view == "filter_genre"):
 
             genre_choice = st.text_input("Enter the genre for the movie: ").strip().title()
             if genre_choice:    #This is needed because as soon as the block runs stlit sees that genre choice is empty and else block gets runs as well.
@@ -216,6 +223,8 @@ def apply_filter(df,ready_to_use_columns):
                     filtered_df_by_genre = filter_by_genre(df,genre_choice,ready_to_use_columns["Genre"])
                     st.write("The df with the entered genre is: ")
                     st.write(filtered_df_by_genre)
+      
+
                 else:
                     st.write("Genre not available, try one of the following: ")
                     st.write((df[ready_to_use_columns["Genre"]].unique()))
@@ -236,6 +245,8 @@ def apply_filter(df,ready_to_use_columns):
                     filtered_df_by_language = filter_by_language(df,language_choice,ready_to_use_columns["Language"])
                     st.write("The filtered datset by provided language is: ")
                     st.write(filtered_df_by_language)
+
+
                 else:
                     st.write("Language not available , try one of the following: ")
                     st.write(", ".join(df[ready_to_use_columns["Language"]].unique()))
@@ -276,7 +287,6 @@ def main():
 
     uploaded_file = st.file_uploader("upload your csv file: ")
 
-
     if uploaded_file: 
         st.session_state.file = "uploaded"
         df = load_data(uploaded_file)
@@ -284,16 +294,13 @@ def main():
         ready_to_use_columns = fuzzy_matcher(df,TARGETS,THRESHOLD)
         clean_dates(df,ready_to_use_columns["Year"])
 
-
     user_choice = st.subheader("SELECT ONE OF THE FOLLOWING ")
+
             
     if "main_view" not in st.session_state:
         st.session_state.main_view = False
     
-    if "branch_view" not in st.session_state:
-        st.session_state.branch_view = False
-
-
+    
     with st.empty().container():
         col1, col2, col3 = st.columns(3)
 
@@ -308,6 +315,7 @@ def main():
         if (st.session_state.main_view == "whole_ds"):
                 st.write("The whole dataset is: ")
                 st.write(df)
+                st.session_state.main_view = None
             
 
 
@@ -321,6 +329,7 @@ def main():
             
         if (st.session_state.main_view == "analysis"):
             apply_analysis(df,ready_to_use_columns)
+            st.session_state.main_view = None
 
 
 
@@ -335,6 +344,7 @@ def main():
  
         if (st.session_state.main_view == "apply_filter"):
             apply_filter(df,ready_to_use_columns)
+            st.session_state.main_view = None
 
 
 
