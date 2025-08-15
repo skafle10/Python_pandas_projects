@@ -162,196 +162,123 @@ def year_wise_analysis(df,release_date,rating,movie):
 #'''Display the data analysis using streamlit'''
 
 def apply_analysis(df,ready_to_use_columns):
+    pass
 
-    if (st.session_state.main_view == "analysis"):
-            
-        if "branch_view" not in st.session_state:
-            st.session_state.branch_view = False
-
-        st.subheader("Enter how do you want to analyze the movies: ")
-        col1, col2 = st.columns(2)            
-        with col1:
-            if st.button("RELEASE_YEAR"):
-                st.session_state.branch_view = "year"
-
-        if (st.session_state.branch_view == "year"):
-            st.subheader("The year wise analyis is: ")
-            average_ratings_per_year, total_movies_released_per_year =  year_wise_analysis(df,ready_to_use_columns["Year"],ready_to_use_columns["Rating"],ready_to_use_columns["Title"])
-            st.write("The average ratings per year of the movies is: ")
-            st.write(average_ratings_per_year)
-            st.write("The no of movies released per year is:")
-            st.write(total_movies_released_per_year)
-                    
-
-
-        with col2:
-            if st.button("GENRE"):
-                st.session_state.branch_view = "genre"
-
-        if (st.session_state.branch_view == "genre"):
-        
-            st.subheader("The genre wise analysis is: ")
-            average_rating_per_genre,frequently_released_genre = genre_wise_analysis(df,ready_to_use_columns["Genre"],ready_to_use_columns["Rating"],ready_to_use_columns["Year"])
-            st.write("The average ratings per genre is: ")
-            st.write(average_rating_per_genre)
-            st.write("The frequently released genre is: ")
-            st.write(frequently_released_genre)
-                        
 
 
 
 #'''apply the filters to the data and show the filtered df using streamlit.'''
 def apply_filter(df,ready_to_use_columns):
 
-    if (st.session_state.main_view == "apply_filter"):
+    st.subheader("Filtyer Type: ")
+    branch = st.radio("Choose the filter: ",["Genre","Country","Language","Release Date"],index=None)
 
-        if "branch_view" not in st.session_state:
-            st.session_state.branch_view = False
+    if (branch == "Genre"):
+        st.session_state.branch_view = "genre_filter"
 
-        st.subheader("how do you want to Filter the dataset?: ")
-        col4,col5,col6 = st.columns(3)
-        
-        with col4: 
-            if st.button("Genre"):
-                st.session_state.branch_view = "filter_genre"
+    elif (branch == "Country"):
+        st.session_state.branch_view = "country_filter"
 
-        if (st.session_state.branch_view == "filter_genre"):
+    elif(branch == "Language"):
+        st.session_state.branch_view = "language_filter"
 
-            genre_choice = st.text_input("Enter the genre for the movie: ").strip().title()
-            if genre_choice:    #This is needed because as soon as the block runs stlit sees that genre choice is empty and else block gets runs as well.
-                if genre_choice in df[ready_to_use_columns["Genre"]].values:
-                    filtered_df_by_genre = filter_by_genre(df,genre_choice,ready_to_use_columns["Genre"])
-                    st.write("The df with the entered genre is: ")
-                    st.write(filtered_df_by_genre)
-      
-
-                else:
-                    st.write("Genre not available, try one of the following: ")
-                    st.write((df[ready_to_use_columns["Genre"]].unique()))
-                                        
-
-
-        
-        with col5:
-            if st.button("Language"):
-                st.session_state.branch_view = "language"
-
-
-        if (st.session_state.branch_view == "language"):
-            language_choice = st.text_input("Enter the language for the movie: ").strip().title()
-
-            if language_choice:
-                if language_choice in df[ready_to_use_columns["Language"]].unique():
-                    filtered_df_by_language = filter_by_language(df,language_choice,ready_to_use_columns["Language"])
-                    st.write("The filtered datset by provided language is: ")
-                    st.write(filtered_df_by_language)
-
-
-                else:
-                    st.write("Language not available , try one of the following: ")
-                    st.write(", ".join(df[ready_to_use_columns["Language"]].unique()))
-                
+    elif(branch == "Release Date"):
+        st.session_state.branch_view = "releasedate_filter"
 
 
 
-        with col6:
-            if st.button("Country"):
-                st.session_state.branch_view = "country"
+    if st.session_state.branch_view == "genre_filter":
+        genre_input = st.text_input("Enter the genre").strip().title()
+        st.write("The filtered dataset by genre is: ")
+        st.write(filter_by_genre(df,ready_to_use_columns["Genre"],genre_input))
 
-        if (st.session_state.branch_view == "country"):
-            country_choice = st.text_input("Enter the country name:").strip().title()
-        
-            if country_choice:
-                # st.write(f"Your country choice is: {country_choice}")
 
-                if country_choice in df[ready_to_use_columns["Country"]].unique():
-                    filtered_df_by_country = filter_by_country(df,country_choice,ready_to_use_columns["Country"])
-                    st.write("The filtered dataset by provided country is: ")
-                    st.write(filtered_df_by_country)
+    if st.session_state.branch_view == "country_filter":
+        pass
 
-                else:
-                    st.write("Country not available, try one of the following: ")
-                    st.write(", ".join(df[ready_to_use_columns["Country"]].unique()))
+    if st.session_state.branch_view == "language_filter":
+        pass
 
+    if st.session_state.branch_view == "releasedate_filter":
+        pass
+    
 
 
 
 
 def main():
+        
+    defaults = {
+        "main_view": None,
+        "branch_view" : None,
+        "file" : None,
+        "df" : None,
+        
+    }
 
-    st.header("MOVIE RATING ANALYZER")
 
-    if "file" not in st.session_state:
-        st.session_state.file = "not_uploaded"
+    for key,value in defaults.items():
+        if key not in st.session_state:
+            st.session_state[key] = value
 
 
-    uploaded_file = st.file_uploader("upload your csv file: ")
 
-    if uploaded_file: 
-        st.session_state.file = "uploaded"
+    st.header("MOVIE RATING ANALYZER: ")
+
+    uploaded_file = st.file_uploader("Enter yout csv file: ")
+
+    if uploaded_file:
         df = load_data(uploaded_file)
+        ready_to_use_columns = fuzzy_matcher(df, TARGETS,THRESHOLD)
         clean_string_columns(df)
-        ready_to_use_columns = fuzzy_matcher(df,TARGETS,THRESHOLD)
         clean_dates(df,ready_to_use_columns["Year"])
 
-    user_choice = st.subheader("SELECT ONE OF THE FOLLOWING ")
+    col1, col2, col3 = st.columns(3)
 
-            
-    if "main_view" not in st.session_state:
-        st.session_state.main_view = False
+
+    if col1.button("Whole DS"):
+        if uploaded_file:
+            st.session_state.main_view = "whole ds"
+
+        else:
+            st.warning("Please upload the file first!!")
+
+
+    if col2.button("Apply Filter"):
+        if uploaded_file:
+            st.session_state.main_view = "filter ds"
+        else:
+            st.warning("Please upload the file first!!")
+
+
+    if col3.button("Analysis"):
+        if uploaded_file:
+            st.session_state.main_view = "analyze"
+
+        else:
+            st.warning("Please upload the file first!!")
+
     
-    
-    with st.empty().container():
-        col1, col2, col3 = st.columns(3)
+    if (st.session_state.main_view == "whole ds"):
+        st.subheader("The whole dataset is: ")
+        st.write(df)
 
-        with col1: 
-            if st.button("Whole Dataset"): 
-                if st.session_state.file == "uploaded":
-                    st.session_state.main_view = "whole_ds"
+    elif (st.session_state.main_view == "filter ds"):
+        apply_filter(df,ready_to_use_columns)
 
-                else:
-                    st.warning("Please upload the file first!!")
-                
-        if (st.session_state.main_view == "whole_ds"):
-                st.write("The whole dataset is: ")
-                st.write(df)
-                st.session_state.main_view = None
-            
-
-
-        with col2:
-            if st.button("Analysis"):
-                if st.session_state.file == "uploaded":
-                    st.session_state.main_view = "analysis"
-
-                else:
-                    st.warning("Please upload the file first!!")
-            
-        if (st.session_state.main_view == "analysis"):
-            apply_analysis(df,ready_to_use_columns)
-            st.session_state.main_view = None
+    elif (st.session_state.main_view == "analyze"):
+        apply_analysis(df,ready_to_use_columns)
 
 
 
-        with col3:
-            if st.button("Apply Filter"):
-                if st.session_state.file == "uploaded":
-                    st.session_state.main_view = "apply_filter"
-
-                else:
-                    st.warning("Please upload the file first!!")
-
- 
-        if (st.session_state.main_view == "apply_filter"):
-            apply_filter(df,ready_to_use_columns)
-            st.session_state.main_view = None
 
 
 
-        
- 
 
 if __name__ == "__main__":
+
+
+
 
     main()
     
