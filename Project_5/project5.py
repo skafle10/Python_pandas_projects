@@ -189,18 +189,59 @@ def apply_filter(df,ready_to_use_columns):
 
     if st.session_state.branch_view == "genre_filter":
         genre_input = st.text_input("Enter the genre").strip().title()
-        st.write("The filtered dataset by genre is: ")
-        st.write(filter_by_genre(df,ready_to_use_columns["Genre"],genre_input))
+        
+        if genre_input:
+
+            if genre_input in df[ready_to_use_columns["Genre"]].values:
+                st.write("The filtered dataset by genre is: ")
+                st.write(filter_by_genre(df,genre_input,ready_to_use_columns["Genre"]))
+
+            else:
+                st.write("Genre not available, enter one of the following: ")
+                st.write(df[ready_to_use_columns["Genre"]].unique()) 
+
 
 
     if st.session_state.branch_view == "country_filter":
-        pass
+        country_input = st.text_input("Enter the country: ").strip().title()
+
+        if country_input:
+            if country_input in df[ready_to_use_columns["Country"]].values:
+                st.write("The filtered dataset by country is: ")
+                st.write(filter_by_country(df,country_input,ready_to_use_columns["Country"]))
+
+            else:
+                st.write("Country not available, enter one of the following: ")
+                st.write(df[ready_to_use_columns["Country"]].unique()) 
+
+
+
 
     if st.session_state.branch_view == "language_filter":
-        pass
+
+        language_input = st.text_input("Enter the language: ").strip().title()
+
+        if language_input:
+            if language_input in df[ready_to_use_columns["Language"]].values:
+                st.write("The filtered dataset by language is: ")
+                st.write(filter_by_language(df,language_input,ready_to_use_columns["Language"]))
+
+            else:
+                st.write("language not available, enter one of the following: ")
+                st.write(df[ready_to_use_columns["Language"]].unique()) 
+
+
+
+
 
     if st.session_state.branch_view == "releasedate_filter":
-        pass
+
+        start_date = st.text_input("Enter the start date")
+        end_date = st.text_input("Enter the end date: ")
+
+        if (start_date and end_date):
+            st.write("The filtered dataset by release date is: ")
+            st.write(filter_by_country(df,start_date,end_date,ready_to_use_columns["Year"]))
     
 
 
@@ -232,6 +273,8 @@ def main():
         ready_to_use_columns = fuzzy_matcher(df, TARGETS,THRESHOLD)
         clean_string_columns(df)
         clean_dates(df,ready_to_use_columns["Year"])
+        
+        # st.write(df)
 
     col1, col2, col3 = st.columns(3)
 
