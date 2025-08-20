@@ -83,38 +83,15 @@ def show_basic_info(df,year):
 
 
 
-# '''Filters movies based on the language'''
-def filter_by_language(df,user_input,language):
+#Applies filter bsed on language,genre,country
+def filter(df,user_input,filterby):
     try:
-        filtered_df = df[ df[language] == user_input]
-
+        filtered_df = df[ df[filterby] == user_input]
         return filtered_df
-
+    
     except Exception as e:
-        return f"Error in filtering by language due to {e}"
-
-
-
-# '''Filters the movies based on the movie genre'''
-def filter_by_genre(df,user_input,genre):
-    try:
-        filtered_df = df[df[genre] == user_input]
-        return filtered_df
-
-    except Exception as e:
-        return f"Error in filtering by genre due to {e}"
-
-
-
-# '''Filters the movie based on the given country'''
-def filter_by_country(df,user_input,country):
-    try:
-        filtered_df = df[df[country] == user_input]
-
-        return filtered_df
-
-    except Exception as e:
-        return f"Error in filtering by country due to {e}"
+        return f"Error in filtering due to {e}"
+    
     
 
 # '''Filters the movies based on the given release date'''
@@ -141,6 +118,9 @@ def genre_wise_analysis(df,genre,rating,release_date):
         return f"Error in genre wise analysis due to {e}"
 
 
+def analyze_group(df,group_col1,groupc_col2,group_col3):
+    pass
+
 
 # '''Shows insights based on the release year'''
 def year_wise_analysis(df,release_date,rating,movie):
@@ -149,11 +129,8 @@ def year_wise_analysis(df,release_date,rating,movie):
         total_movies_released_each_year = df.groupby(release_date)[movie].size().sort_values(ascending=False)
         return average_rating_per_year,total_movies_released_each_year
 
-
-
     except Exception as e:
         return f"Error in year wise analysis due to {e}"
-
 
 
 #'''Display the data analysis using streamlit'''
@@ -208,74 +185,38 @@ def apply_filter(df,ready_to_use_columns):
         st.session_state.branch_view = "releasedate_filter"
 
 
+    if filter_choice:
+        if st.session_state.branch_view == "genre_filter":
+            genre_input = st.selectbox("Select the genre: ", df[ready_to_use_columns["Genre"]].unique(), index=None )     # we can pass not only list but bunch of other objects like - list, tuple, dictionary, numpyarray, etc.
+            if genre_input:
+                if genre_input in df[ready_to_use_columns["Genre"]].values:
+                    st.write("The filtered dataset by genre is: ")
+                    st.write(filter(df,genre_input,ready_to_use_columns["Genre"]))
 
-    if st.session_state.branch_view == "genre_filter":
-        genre_input = st.text_input("Enter the genre").strip().title()
-        
-        if genre_input:
-
-            if genre_input in df[ready_to_use_columns["Genre"]].values:
-                st.write("The filtered dataset by genre is: ")
-                st.write(filter_by_genre(df,genre_input,ready_to_use_columns["Genre"]))
-
-            else:
-                st.write("Genre not available, enter one of the following: ")
-                st.write(df[ready_to_use_columns["Genre"]].unique()) 
-
-
-
-    if st.session_state.branch_view == "country_filter":
-        country_input = st.text_input("Enter the country: ").strip().title()
-
-        if country_input:
-            if country_input in df[ready_to_use_columns["Country"]].values:
-                st.write("The filtered dataset by country is: ")
-                st.write(filter_by_country(df,country_input,ready_to_use_columns["Country"]))
-
-            else:
-                st.write("Country not available, enter one of the following: ")
-                st.write(df[ready_to_use_columns["Country"]].unique()) 
+    if filter_choice:
+        if st.session_state.branch_view == "country_filter":
+            country_input = st.selectbox("Select the country: ",df[ready_to_use_columns["Country"]].unique(),index = None)
+            if country_input:
+                if country_input in df[ready_to_use_columns["Country"]].values:
+                    st.write("The filtered dataset by country is: ")
+                    st.write(filter(df,country_input,ready_to_use_columns["Country"]))
 
 
+    if filter_choice:
+        if st.session_state.branch_view == "language_filter":
+            language_input = st.selectbox("Select the language: ", df[ready_to_use_columns["Language"]].unique(),index=None)
+            if language_input:
+                if language_input in df[ready_to_use_columns["Language"]].values:
+                    st.write("The filtered dataset by language is: ")
+                    st.write(filter(df,language_input,ready_to_use_columns["Language"]))
 
-
-    if st.session_state.branch_view == "language_filter":
-
-        language_input = st.text_input("Enter the language: ").strip().title()
-
-        if language_input:
-            if language_input in df[ready_to_use_columns["Language"]].values:
-                st.write("The filtered dataset by language is: ")
-                st.write(filter_by_language(df,language_input,ready_to_use_columns["Language"]))
-
-            else:
-                st.write("language not available, enter one of the following: ")
-                st.write(df[ready_to_use_columns["Language"]].unique()) 
-
-
-
-    if st.session_state.branch_view == "releasedate_filter":
-
-        start_date = st.text_input("Enter the start date")
-        end_date = st.text_input("Enter the end date: ")
-
-        if (start_date and end_date):
-            try:
-                start_date = int(start_date)
-                end_date = int(end_date)
-
-            except Exception as e: 
-                st.write(f"Error converting the date due to {e}")
-
+    if filter_choice:
+        if st.session_state.branch_view == "releasedate_filter":
+            start_date = st.selectbox("Select the start date: ",df[ready_to_use_columns["Year"]].unique(),index=None)
+            end_date = st.selectbox("Select the end date: ", df[ready_to_use_columns["Year"]].unique(),index=None)
             if (start_date and end_date in df[ready_to_use_columns["Year"]].unique()):
-
                 st.write("The filtered dataset by release date is: ")
-                st.write(filter_by_release_date(df,start_date,end_date,ready_to_use_columns["Year"]))
-    
-            else:
-                st.write("Please provide a valid year between:\n"
-                         f"{df[ready_to_use_columns["Year"]].min()} and {df[ready_to_use_columns["Year"]].max()}")
-
+               
 
 
 def main():
