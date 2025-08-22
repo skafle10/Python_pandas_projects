@@ -112,14 +112,29 @@ def genre_wise_analysis(df,genre,rating,release_date):
     try:
         average_ratings_per_genre = df.groupby(genre)[rating].mean().sort_values(ascending=False)
         most_frequent_genres = df.groupby(genre)[release_date].size().sort_values(ascending=False)
+
         return average_ratings_per_genre,most_frequent_genres
+
 
     except Exception as e:
         return f"Error in genre wise analysis due to {e}"
 
 
-def analyze_group(df,group_col1,groupc_col2,group_col3):
-    pass
+
+def analyze_group(df,**columns):
+    if all(key in columns for key in ["grouping_column","func_type"]) :   #we must mention full condition twice, if we do if "sth" and "other" in (...) then it will just check if sth which is a string and always true and that true is compare with  2nd condition
+        if columns["func_type"] == "mean_sort":
+            mean_analyzed_data = df.groupby(columns["grouping_column"])[columns["operated_column"]].mean().sort_values(ascending=False)
+            return mean_analyzed_data
+        
+        elif columns["func_type"] == "size_sort":
+            st.write("WE are inside size sort")
+            size_analyzed_data =  df.groupby(columns["grouping_column"]).size().sort_values(ascending=False)
+            return size_analyzed_data
+        
+        else:
+            raise ValueError(f"Invalid func type {columns["func_type"]}")
+        
 
 
 # '''Shows insights based on the release year'''
@@ -127,6 +142,7 @@ def year_wise_analysis(df,release_date,rating,movie):
     try:
         average_rating_per_year = df.groupby(release_date)[rating].mean().sort_values(ascending=False)
         total_movies_released_each_year = df.groupby(release_date)[movie].size().sort_values(ascending=False)
+
         return average_rating_per_year,total_movies_released_each_year
 
     except Exception as e:
@@ -147,22 +163,22 @@ def apply_analysis(df,ready_to_use_columns):
 
     if analysis_choice:
         if (st.session_state.branch_view == "year_wise_analysis"):
-            average_rating_per_year,total_movies_released_each_year =  year_wise_analysis(df,ready_to_use_columns["Year"],ready_to_use_columns["Rating"],ready_to_use_columns["Title"])
             st.subheader("The year wise analysis is: ")
             st.write("The average rating per year is: ")
-            st.write(average_rating_per_year)
+            st.write(analyze_group(df,grouping_column = ready_to_use_columns["Year"], operated_column = ready_to_use_columns["Rating"] ,func_type = "mean_sort"))
             st.write("The total movies released each year are: ")
-            st.write(total_movies_released_each_year)
+            st.write(analyze_group(df,grouping_column = ready_to_use_columns["Year"],func_type = "size_sort"))
 
 
     if analysis_choice:
         if (st.session_state.branch_view == "genre_wise_analysis"):
-            average_ratings_per_genre,most_frequent_genres = genre_wise_analysis(df,ready_to_use_columns["Genre"],ready_to_use_columns["Rating"],ready_to_use_columns["Year"])
+
             st.subheader("The Genre wise analysis is: ")
             st.write("Average rating per genre: ")
-            st.write(average_ratings_per_genre)
-            st.write("Genre with highes no of movies: ")
-            st.write(most_frequent_genres)
+            st.write(analyze_group(df,grouping_column = ready_to_use_columns["Genre"], operated_column = ready_to_use_columns["Rating"] ,func_type = "mean_sort"))
+        
+            st.write("Genre with highest no of movies: ")
+            st.write(analyze_group(df,grouping_column = ready_to_use_columns["Genre"], operated_column = "messi",func_type = "size_sort"))
 
 
 
